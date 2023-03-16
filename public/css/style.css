@@ -1,0 +1,16 @@
+.team-item {
+  display: flex;
+  justify-content: center;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem ;
+  padding: 1rem;
+}
+
+*{
+padding: 0;
+margin: 0;
+}
