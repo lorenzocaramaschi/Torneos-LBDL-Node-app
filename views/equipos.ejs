@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Equipos: Torneos de "La Banda del Lobo"</title>
+    <link
+      rel="shortcut icon"
+      href="https://i.imgur.com/j6itbSk.png"
+      type="image/x-icon"
+    />
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div class="team-grid">
+      <% documents.map((document)=>{ %>
+      <div class="team-item">
+        <button
+          type="button"
+          onclick= "location.href='/equipos/<%= document.teamName %>'"
+        >
+          <img
+            width="150rem"
+            height="150rem"
+            src="<%= document.logo %>"
+            alt="<%= document.teamName %>"
+          />
+        </button>
+      </div>
+      <% }) %>
+    </div>
+  </body>
+</html>

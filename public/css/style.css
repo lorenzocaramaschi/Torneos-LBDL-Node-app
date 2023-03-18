@@ -1,7 +1,18 @@
 .team-item {
   display: flex;
   justify-content: center;
+  transition: 1s;
 }
+.team-item:hover{
+  transform: scale(1.05);
+}
+
+.team-title-info{
+  display: flex;
+  align-items: center;
+  font-size: 4rem;
+}
+
 
 .team-grid {
   display: grid;

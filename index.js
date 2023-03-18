@@ -29,14 +29,12 @@ const Team = mongoose.model("Team", teamSchema);
 const app = express();
 
 app.set("view engine", "ejs");
-app.use(express.static('public'));
+app.use(express.static("public"));
 app.use(
   bodyParser.urlencoded({
     extended: true,
   })
 );
-
-
 
 app.get("/admin", function (req, res) {
   res.render("admin");
@@ -66,12 +64,24 @@ app.delete("/admin", function (req, res) {
   });
 });
 
-app.get("/", async (req, res) => {
+app.get("/", (req, res) => {
+  res.send("<h1>Bienvenido a Torneos LBDL</h1>");
+});
+
+app.get("/equipos", async (req, res) => {
   const documents = await Team.find({});
-  res.render('landing',{documents: documents});
+  res.render("equipos", { documents: documents });
 });
 
 app.listen(3000, function () {
   console.log("App is running on Port 3000");
   console.log(__dirname);
+});
+
+app.get("/equipos/:team", async (req, res) => {
+  const teams = await Team.find({});
+  const {team} = req.params;
+  const teamInfo = await Team.find({teamName: {$eq: team}})  
+  
+  res.render("infoEquipos", { teams: teams, team: team, teamInfo: teamInfo });
 });
