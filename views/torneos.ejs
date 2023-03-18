@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Equipos: Torneos de "La Banda del Lobo"</title>
+    <title>Torneos: Torneos de "La Banda del Lobo"</title>
     <link
       rel="shortcut icon"
       href="https://i.imgur.com/j6itbSk.png"
@@ -12,19 +12,19 @@
     />
     <link href="css/style.css" rel="stylesheet" type="text/css" />
   </head>
-  <body>    
+  <body>
     <div class="team-grid">
-      <% documents.map((document)=>{ %>
+      <% tournaments.map((tournamentEl)=>{ %>
       <div class="team-item">
         <button
           type="button"
-          onclick= "location.href='/equipos/<%= document.teamName %>'"
+          onclick= "location.href='/torneos/<%= tournamentEl.name %>'"
         >
           <img
             width="150rem"
             height="150rem"
-            src="<%= document.logo %>"
-            alt="<%= document.teamName %>"
+            src="<%= tournamentEl.logo %>"
+            alt="<%= tournamentEl.name %>"
           />
         </button>
       </div>

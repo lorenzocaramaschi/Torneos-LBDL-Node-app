@@ -19,5 +19,55 @@
       <input type="text" placeholder="Escudo del Equipo" name="logo" />
       <button type="submit">Enviar</button>
     </form>
+
+    <h2>Agregar un torneo</h2>
+    <form action="/admin/tournaments" method="post">
+      <input
+        type="text"
+        placeholder="Nombre del Torneo"
+        name="tournamentName"
+      />
+      <input
+        type="text"
+        placeholder="Escudo del Torneo"
+        name="tournamentLogo"
+      />
+      <input type="number" placeholder="Año del Torneo" name="tournamentYear" />
+      <input type="text" placeholder="Playlist" name="tournamentPlaylist" />
+      <button type="submit">Enviar</button>
+    </form>
+
+    <h2>Agregar un partido</h2>
+    <form action="/admin/matches" method="post">
+      <h3>Video</h3>
+      <input type="text" placeholder="Video" name="video" />
+      <div>
+        <h3>Resultado</h3>
+        <input type="text" placeholder="Local" name="home" />
+        <input type="number" placeholder="Goles Local" name="homeScore" />
+        <input type="number" placeholder="Goles Visitante" name="awayScore" />
+        <input type="text" placeholder="Visitante" name="away" />
+      </div>
+      <div>
+        <h3>ID del Torneo y Fase</h3>
+        <input type="text" placeholder="ID del Torneo" name="tournament" />
+        <input type="text" placeholder="Ronda" name="round" />
+      </div>
+      <h3>Penales</h3>
+      <input
+        type="checkbox"
+        name="penalties"
+        class="inline checkbox"
+        id="checkbox1"
+        value="penalties"
+      />
+      <input type="number" placeholder="Penales Local" name="penaltiesHome" />
+      <input
+        type="number"
+        placeholder="Penales Visitante"
+        name="penaltiesAway"
+      />
+      <button type="submit">Enviar</button>
+    </form>
   </body>
 </html>

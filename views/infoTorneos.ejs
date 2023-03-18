@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= tournament %></title>
+    <link
+      rel="shortcut icon"
+      href="https://i.imgur.com/j6itbSk.png"
+      type="image/x-icon"
+    />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="/css/style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>      
+    <% if(tournamentInfo.length === 0){ %>
+      <h1>Ese torneo no existe!</h1>
+      <button type="button" onclick="location.href = '/torneos'">Ir a torneos</button>
+  <% } else{ %>
+    <% tournamentInfo.map((info)=>{ %>
+      <div>
+        <div class="team-title-info">
+          <img src="<%= info.logo %>" alt="<%= info.name %>" width="120rem" height="120rem"/>
+          <h1><%= info.name %></h1>          
+        </div>
+        <div class="tournament-year">
+            <%= info.year %>
+        </div>
+        <% if(info.playlist != "N/A"){ %>
+            <div>
+                Mirá los partidos del <% info.name %> <a target="_blank" href="<%= info.playlist %>"><i class='bx bxs-videos'></i></a>
+            </div>
+            <% } else{ %>
+                <div>
+                    Este torneo no ha sido filmado.
+                </div>
+            <% } %>
+      </div>
+  
+      <% }) %> 
+  <% } %>
+
+    
+
+   
+
+ 
+  </body>
+</html>

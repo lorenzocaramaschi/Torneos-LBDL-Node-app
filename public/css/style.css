@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
 .team-item {
   display: flex;
   justify-content: center;
@@ -10,7 +12,7 @@
 .team-title-info{
   display: flex;
   align-items: center;
-  font-size: 4rem;
+  font-size: 3rem;
 }
 
 
@@ -24,4 +26,10 @@
 *{
 padding: 0;
 margin: 0;
+font-family: 'Bebas Neue',cursive;
+font-weight: lighter;
+}
+
+.tournament-year{
+  font-size: 3rem;
 }
