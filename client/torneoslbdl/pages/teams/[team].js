@@ -31,6 +31,26 @@ export const getStaticProps = async (context) => {
 };
 
 const Details = ({ team, allTeamData }) => {
+  let awayLogo = "";
+  let homeLogo = "";
+
+  const getLogo = (teamName, condition) => {
+    allTeamData.data.map((el) => {
+      for (let i = 0; i < team.data.length; i++) {
+        if (teamName === el.name) {
+          homeLogo = el.logo;
+          awayLogo = el.logo          
+        } 
+      }
+    });
+
+    if (condition === "away") {
+      return awayLogo;
+    } else if (condition === "home") {
+      return homeLogo;
+    }
+  };
+
   return (
     <>
       <Head>
@@ -49,14 +69,24 @@ const Details = ({ team, allTeamData }) => {
             <div>
               <div className="team-score">
                 <div className="team-data">
-                  <img alt={`Escudo ${el.home}`} />
+                  <img
+                    alt={`Escudo ${el.home}`}
+                    src={getLogo(el.home, "home")}
+                    width="30rem"
+                    height="30rem"
+                  />
                   <p>{el.home}</p>
                 </div>
                 <p>{el.homeScore}</p>
               </div>
               <div className="team-score">
                 <div className="team-data">
-                  <img alt={`Escudo ${el.away}`} />
+                  <img
+                    alt={`Escudo ${el.away}`}
+                    src={getLogo(el.away, "away")}
+                    width="30rem"
+                    height="30rem"
+                  />
                   <p>{el.away}</p>
                 </div>
                 <p>{el.awayScore}</p>
