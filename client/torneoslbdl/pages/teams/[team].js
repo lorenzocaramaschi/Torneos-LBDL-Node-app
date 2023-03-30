@@ -30,7 +30,7 @@ export const getStaticProps = async (context) => {
   };
 };
 
-const Details = ({ team, allTeamData }) => {
+export const Details = ({ team, allTeamData }) => {
   let awayLogo = "";
   let homeLogo = "";
 
