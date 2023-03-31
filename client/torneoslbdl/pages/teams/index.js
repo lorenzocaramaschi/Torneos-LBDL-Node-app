@@ -20,7 +20,8 @@ const Teams = ({ teams }) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h1>Teams</h1>
+      <img width='123rem' height='123rem' src="https://i.imgur.com/j6itbSk.png" />
+      <h1>Equipos de La Banda del Lobo</h1>
       {teams.data.map((team) => (
         <Link href={`/teams/${team.name}`} key={team._id} className="teamItem">
           <h3>{team.name}</h3>

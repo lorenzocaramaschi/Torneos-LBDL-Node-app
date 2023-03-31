@@ -10,7 +10,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <h1>La Banda del Lobo 1</h1>
+      <img width='123rem' height='123rem' src="https://i.imgur.com/j6itbSk.png" />
+        <h1>Torneos de La Banda del Lobo</h1>
       </main>
     </>
   )

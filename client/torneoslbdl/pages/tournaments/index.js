@@ -20,6 +20,7 @@ const Tournaments = ({ tournaments }) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <img width='123rem' height='123rem' src="https://i.imgur.com/j6itbSk.png" />
       <h1>Torneos de La Banda del Lobo</h1>
       {tournaments.data.map((tournament) => (
         <Link href={`/tournaments/${tournament.name}`} key={tournament._id} className="teamItem">
