@@ -1,4 +1,10 @@
-import { Circle, PlayDisabled } from "@mui/icons-material";
+import {
+  ArrowLeft,
+  Circle,
+  FilterAltOutlined,
+  PlayDisabled,
+} from "@mui/icons-material";
+import { Divider } from "@mui/material";
 import Head from "next/head";
 
 export const getStaticPaths = async () => {
@@ -25,18 +31,42 @@ export const getStaticProps = async (context) => {
   const response = await fetch("http://localhost:3001/equipos");
   const allTeams = await response.json();
 
+  const response2 = await fetch("http://localhost:3001/torneos");
+  const allTournaments = await response2.json();
+
   return {
-    props: { teamMatches: data, allTeamData: allTeams, name: name },
+    props: {
+      teamMatches: data,
+      allTeamData: allTeams,
+      name: name,
+      tournaments: allTournaments,
+    },
   };
 };
 
-export const Details = ({ teamMatches, allTeamData, name }) => {
+export const Details = ({ teamMatches, allTeamData, name, tournaments }) => {
   const getLogo = (teamName) => {
     let teamLogo = allTeamData.data.filter(
       (teamData) => teamData.name === teamName
     );
+
     return teamLogo[0].logo;
   };
+
+  const getTournamentLogo = (tournamentName) => {
+    let tournamentLogo = tournaments.data.filter(
+      (tournamentData) => tournamentData.name === tournamentName
+    );
+
+    return tournamentLogo[0].logo;
+  };
+
+  const resetHistoryParams = () => {
+    winsVsRival = 0;
+    lossesVsRival = 0;
+    tiesVsRival = 0;
+  };
+
   const teamSelected = allTeamData.data.filter((team) => team.name === name);
 
   const teamMatchesClone = [...teamMatches.data];
@@ -51,6 +81,9 @@ export const Details = ({ teamMatches, allTeamData, name }) => {
     (match) => match.round === "Final"
   );
   let tournamentsWon = 0;
+  let winsVsRival = 0;
+  let lossesVsRival = 0;
+  let tiesVsRival = 0;
 
   return (
     <>
@@ -253,58 +286,214 @@ export const Details = ({ teamMatches, allTeamData, name }) => {
                   return tournamentsWon;
                 })}
           </p>
-        </div>
-      </div>
-      <div className="matches-container">
-        {teamMatches.data.map((el) => (
-          <div key={el._id} className="match-container">
-            <div className="match-tournament-info">
-              <p>{el.tournament}</p>
-              <p>{el.round}</p>
-            </div>
+          <div>
+            <h2>Historiales</h2>
             <div>
-              <div className="team-score">
-                <div className="team-data">
-                  <img
-                    alt={`Escudo ${el.home}`}
-                    src={getLogo(el.home)}
-                    width="30rem"
-                    height="30rem"
-                  />
-                  <p>{el.home}</p>
-                </div>
-                <p>{el.homeScore}</p>
+              <div>
+                Filtrar por: <FilterAltOutlined />
               </div>
-              <div className="team-score">
-                <div className="team-data">
-                  <img
-                    alt={`Escudo ${el.away}`}
-                    src={getLogo(el.away)}
-                    width="30rem"
-                    height="30rem"
-                  />
-                  <p>{el.away}</p>
-                </div>
-                <p>{el.awayScore}</p>
+              <div>
+                <label>
+                  Rival
+                  <select name="rival">
+                    {teamMatches.data.map((match) => {
+                      let rival;
+                      match.home === teamSelected[0].name
+                        ? (rival = match.away)
+                        : (rival = match.home);
+                      return <option value={rival}>{rival}</option>;
+                    })}
+                  </select>
+                </label>
+                <label>
+                  Diferencia de gol
+                  <select name="goalDifference">
+                    <option value="+3">+3</option>
+                    <option value="+2">+2</option>
+                    <option value="+3">+1</option>
+                    <option value="+3">0</option>
+                    <option value="+3">-1</option>
+                    <option value="+3">-2</option>
+                    <option value="+3">-3</option>
+                  </select>
+                </label>
+                <label>
+                  Historiales
+                  <select name="history">
+                    <option value="positive">Positivos</option>
+                    <option value="tied">Empatados</option>
+                    <option value="negative">Negativos</option>
+                  </select>
+                </label>
+                <label>
+                  Partidos
+                  <select name="matches">
+                    <option value="won">Ganados</option>
+                    <option value="tied">Empatados</option>
+                    <option value="lost">Perdidos</option>
+                  </select>
+                </label>
+                <label>
+                  Torneos/Partidos
+                  <select name="category">
+                    <option value="won">Amistosos</option>
+                    <option value="tied">Oficiales</option>
+                    <option value="lost">Ambos</option>
+                  </select>
+                </label>
               </div>
             </div>
-            <div className="match-video">
-              {el.video === null ? (
-                <PlayDisabled />
-              ) : (
-                <iframe
-                  width="140rem"
-                  height="100rem"
-                  src={el.video}
-                  title={`${el.home} vs ${el.away}`}
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowFullScreen
-                ></iframe>
-              )}
-            </div>
+            {teamMatches.data.map((match) => {
+              let rival;
+              match.home === teamSelected[0].name
+                ? (rival = match.away)
+                : (rival = match.home);
+              let historyAgainstRival = teamMatches.data.filter(
+                (matchEl) => matchEl.home === rival || matchEl.away === rival
+              );
+
+              return (
+                <div>
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-around",
+                      fontSize: "24px",
+                      fontWeight: "bold",
+                    }}
+                  >
+                    <h3>
+                      {teamSelected[0].name} vs {rival}{" "}
+                    </h3>
+                    {resetHistoryParams()}
+                    {historyAgainstRival.map((match) => {
+                      if (
+                        teamSelected[0].name === match.home &&
+                        match.homeScore > match.awayScore
+                      ) {
+                        winsVsRival++;
+                      } else if (
+                        teamSelected[0].name === match.away &&
+                        match.homeScore < match.awayScore
+                      ) {
+                        winsVsRival++;
+                      } else if (match.awayScore === match.homeScore) {
+                        tiesVsRival++;
+                      } else {
+                        lossesVsRival++;
+                      }
+                    })}
+                    {winsVsRival > lossesVsRival ? (
+                      <div className="winning-history">
+                        <p>
+                          {winsVsRival}-{tiesVsRival}-{lossesVsRival}
+                        </p>
+                      </div>
+                    ) : lossesVsRival > winsVsRival ? (
+                      <div className="losing-history">
+                        <p>
+                          {winsVsRival}-{tiesVsRival}-{lossesVsRival}
+                        </p>
+                      </div>
+                    ) : (
+                      <div className="tie-history">
+                        <p>
+                          {winsVsRival}-{tiesVsRival}-{lossesVsRival}
+                        </p>
+                      </div>
+                    )}
+                  </div>
+                  <div>
+                    <div key={match._id} className="match-container">
+                      <div className="match-specific-tournament-info">
+                        <img
+                          width="26rem"
+                          height="26rem"
+                          src={getTournamentLogo(match.tournament)}
+                        />
+                        <p>{match.tournament}</p>
+                      </div>
+                      <div>
+                        <div className="team-score">
+                          <div className="team-data">
+                            <img
+                              alt={`Escudo ${match.home}`}
+                              src={getLogo(match.home)}
+                              width="30rem"
+                              height="30rem"
+                            />
+                            <p>{match.home}</p>
+                          </div>
+                          {match.homeScore > match.awayScore ? (
+                            <p>
+                              {match.homeScore}
+                              <ArrowLeft
+                                style={{
+                                  color: "#6568A6",
+                                  position: "absolute",
+                                }}
+                              />
+                            </p>
+                          ) : (
+                            <p>{match.homeScore}</p>
+                          )}
+                        </div>
+                        <Divider className="divider" />
+                        <div className="team-score">
+                          <div className="team-data">
+                            <img
+                              alt={`Escudo ${match.away}`}
+                              src={getLogo(match.away)}
+                              width="30rem"
+                              height="30rem"
+                            />
+                            <p>{match.away}</p>
+                          </div>
+                          {match.homeScore < match.awayScore ? (
+                            <p>
+                              {match.awayScore}
+                              <ArrowLeft
+                                style={{
+                                  color: "#6568A6",
+                                  position: "absolute",
+                                }}
+                              />
+                            </p>
+                          ) : (
+                            <p>{match.awayScore}</p>
+                          )}
+                        </div>
+                      </div>
+                      <div className="match-video">
+                        <Divider
+                          orientation="vertical"
+                          flexItem
+                          className="divider"
+                        />
+                        {match.video === null ? (
+                          <PlayDisabled />
+                        ) : (
+                          <iframe
+                            width="140rem"
+                            height="100rem"
+                            src={
+                              match.video + "&showinfo=0&controls=0&autohide=1"
+                            }
+                            title={`${match.home} vs ${match.away}`}
+                            frameBorder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowFullScreen
+                          ></iframe>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
           </div>
-        ))}
+        </div>
       </div>
     </>
   );
