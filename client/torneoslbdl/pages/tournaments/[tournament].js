@@ -3,7 +3,7 @@ import Head from "next/head";
 import Link from "next/link";
 
 export const getStaticPaths = async () => {
-  const res = await fetch(`http://localhost:3001/torneos`);
+  const res = await fetch(`${process.env.host}/torneos`);
   const data = await res.json();
 
   const paths = data.data.map((tournament) => {
@@ -20,16 +20,16 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async (context) => {
   const name = context.params.tournament;
-  const res = await fetch(`http://localhost:3001/torneos/${name}/partidos`);
+  const res = await fetch(`${process.env.host}/torneos/${name}/partidos`);
   const data = await res.json();
 
-  const response = await fetch("http://localhost:3001/torneos");
+  const response = await fetch(`${process.env.host}/torneos`);
   const allTournaments = await response.json();
   const tournament = allTournaments.data.filter(
     (tournamentEl) => tournamentEl.name === name
   );
 
-  const teamsResponse = await fetch("http://localhost:3001/equipos");
+  const teamsResponse = await fetch(`${process.env.host}/equipos`);
   const allTeams = await teamsResponse.json();
 
   return {

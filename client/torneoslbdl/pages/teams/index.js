@@ -1,8 +1,9 @@
 import Head from "next/head";
 import Link from "next/link";
+import Teams from "../components/Teams";
 
 export const getStaticProps = async () => {
-  const response = await fetch("http://localhost:3001/equipos");
+  const response = await fetch(`${process.env.host}/equipos`);
   const data = await response.json();
   return {
     props: {
@@ -11,7 +12,7 @@ export const getStaticProps = async () => {
   };
 };
 
-const Teams = ({ teams }) => {
+const teamsScene = ({ teams }) => {
   return (
     <>
       <Head>
@@ -20,16 +21,15 @@ const Teams = ({ teams }) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <img width='123rem' height='123rem' src="https://i.imgur.com/j6itbSk.png" />
+      <img
+        width="123rem"
+        height="123rem"
+        src="https://i.imgur.com/j6itbSk.png"
+      />
       <h1>Equipos de La Banda del Lobo</h1>
-      {teams.data.map((team) => (
-        <Link href={`/teams/${team.name}`} key={team._id} className="teamItem">
-          <h3>{team.name}</h3>
-          <img src={team.logo} width="150rem" />
-        </Link>
-      ))}
+     <Teams teams={teams} />
     </>
   );
 };
 
-export default Teams;
+export default teamsScene;

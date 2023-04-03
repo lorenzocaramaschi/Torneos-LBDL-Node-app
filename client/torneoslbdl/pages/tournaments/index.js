@@ -1,8 +1,8 @@
 import Head from "next/head";
-import Link from "next/link";
+import Tournaments from "../components/Tournaments";
 
 export const getStaticProps = async () => {
-  const response = await fetch("http://localhost:3001/torneos");
+  const response = await fetch(`${process.env.host}/torneos`);
   const data = await response.json();
   return {
     props: {
@@ -11,7 +11,7 @@ export const getStaticProps = async () => {
   };
 };
 
-const Tournaments = ({ tournaments }) => {
+const tournamentsScene = ({ tournaments }) => {
   return (
     <>
       <Head>
@@ -22,14 +22,9 @@ const Tournaments = ({ tournaments }) => {
       </Head>
       <img width='123rem' height='123rem' src="https://i.imgur.com/j6itbSk.png" />
       <h1>Torneos de La Banda del Lobo</h1>
-      {tournaments.data.map((tournament) => (
-        <Link href={`/tournaments/${tournament.name}`} key={tournament._id} className="teamItem">
-          <h3>{tournament.name}</h3>
-          <img src={tournament.logo} width="150rem" />
-        </Link>
-      ))}
+      <Tournaments tournaments={tournaments} />      
     </>
   );
 };
 
-export default Tournaments;
+export default tournamentsScene;

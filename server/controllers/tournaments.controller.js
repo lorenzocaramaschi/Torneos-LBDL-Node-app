@@ -46,7 +46,6 @@ const findAllTournaments = async (req, res, next) => {
 const findTournamentMatches = async (req, res, next) => {
   try {
     const { tournamentName } = req.params;
-    console.log(tournamentName)
     const response = await tournamentService.findTournamentMatches(
       tournamentName
     );
