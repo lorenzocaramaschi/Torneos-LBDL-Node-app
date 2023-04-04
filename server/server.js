@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import config from "./config/config.js";
 import errorMiddleware from "./middlewares/error.middleware.js";
 import router from "./routes/index.js";
+import cors from 'cors'
 
 const app = express();
 const PORT = config.PORT || 3001;
@@ -10,6 +11,7 @@ const HOST = config.HOST;
 
 app.use(json());
 app.use(urlencoded({ extended: true }));
+app.use(cors())
 
 app.use("/",router);
 

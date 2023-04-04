@@ -1,6 +1,6 @@
 import React from "react";
 
-const HistoryAgainstRival = ({ name, matches, historyAgainstRival, rival }) => {
+const HistoryAgainstRival = ({ name, historyAgainstRival, rival }) => {
   let winsVsRival = 0;
   let lossesVsRival = 0;
   let tiesVsRival = 0;

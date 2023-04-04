@@ -1,10 +1,9 @@
-import { ArrowLeft, PlayDisabled } from "@mui/icons-material";
-import { Divider } from "@mui/material";
-import Image from "next/image";
 import React from "react";
 import HistoryAgainstRival from "./HistoryAgainstRival";
+import Match from "./Match";
 
-const History = ({ matches, name }) => {
+const History = ({ matches, name, teams }) => {
+  
   return (
     <div>
       <div>
@@ -34,83 +33,7 @@ const History = ({ matches, name }) => {
                 />
               </div>
               <div>
-                <div key={match._id} className="match-container">
-                  <div className="match-specific-tournament-info">
-                    <img width="26rem" height="26rem" src={""} />
-                    <p>{match.tournament}</p>
-                  </div>
-                  <div>
-                    <div className="team-score">
-                      <div className="team-data">
-                        <img
-                          alt={`Escudo ${match.home}`}
-                          src={""}
-                          width="30rem"
-                          height="30rem"
-                        />
-                        <p>{match.home}</p>
-                      </div>
-                      {match.homeScore > match.awayScore ? (
-                        <p>
-                          {match.homeScore}
-                          <ArrowLeft
-                            style={{
-                              color: "#6568A6",
-                              position: "absolute",
-                            }}
-                          />
-                        </p>
-                      ) : (
-                        <p>{match.homeScore}</p>
-                      )}
-                    </div>
-                    <Divider className="divider" />
-                    <div className="team-score">
-                      <div className="team-data">
-                        <img
-                          alt={`Escudo ${match.away}`}
-                          src={""}
-                          width="30rem"
-                          height="30rem"
-                        />
-                        <p>{match.away}</p>
-                      </div>
-                      {match.homeScore < match.awayScore ? (
-                        <p>
-                          {match.awayScore}
-                          <ArrowLeft
-                            style={{
-                              color: "#6568A6",
-                              position: "absolute",
-                            }}
-                          />
-                        </p>
-                      ) : (
-                        <p>{match.awayScore}</p>
-                      )}
-                    </div>
-                  </div>
-                  <div className="match-video">
-                    <Divider
-                      orientation="vertical"
-                      flexItem
-                      className="divider"
-                    />
-                    {match.video === null ? (
-                      <PlayDisabled />
-                    ) : (
-                      <iframe
-                        width="140rem"
-                        height="100rem"
-                        src={match.video + "&showinfo=0&controls=0&autohide=1"}
-                        title={`${match.home} vs ${match.away}`}
-                        frameBorder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowFullScreen
-                      ></iframe>
-                    )}
-                  </div>
-                </div>
+                <Match match={match} />
               </div>
             </div>
           );

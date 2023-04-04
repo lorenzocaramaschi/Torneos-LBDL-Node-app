@@ -1,10 +1,3 @@
-import {
-  ArrowLeft,
-  Circle,
-  FilterAltOutlined,
-  PlayDisabled,
-} from "@mui/icons-material";
-import { Divider } from "@mui/material";
 import Head from "next/head";
 import Team from "../components/Team";
 
