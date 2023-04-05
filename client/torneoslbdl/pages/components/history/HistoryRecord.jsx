@@ -1,5 +1,5 @@
 import React from "react";
-import TeamStats from "./TeamStats";
+import TeamStats from "../teams/TeamStats";
 
 const HistoryRecord = (data) => {  
   let wins = 0;

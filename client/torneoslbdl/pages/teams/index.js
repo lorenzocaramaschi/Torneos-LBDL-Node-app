@@ -1,6 +1,5 @@
 import Head from "next/head";
-import Link from "next/link";
-import Teams from "../components/Teams";
+import Teams from "../components/teams/Teams";
 
 export const getStaticProps = async () => {
   const response = await fetch(`${process.env.host}/equipos`);

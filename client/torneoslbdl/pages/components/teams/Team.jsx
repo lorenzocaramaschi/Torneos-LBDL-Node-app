@@ -1,9 +1,9 @@
 import Image from "next/image";
 import React, { useState } from "react";
-import HistoryRecord from "./HistoryRecord";
+import HistoryRecord from "../history/HistoryRecord";
 import WinningStreak from "./WinningStreak";
-import HistoryFilters from "./HistoryFilters";
-import History from "./History";
+import HistoryFilters from "../history/HistoryFilters";
+import History from "../history/History";
 
 const Team = (team) => {
   const [rival, setRival] = useState("all");

@@ -1,8 +1,8 @@
 import React from "react";
 import HistoryAgainstRival from "./HistoryAgainstRival";
-import Match from "./Match";
+import Match from "../matches/Match";
 
-const History = ({ matches, name, teams }) => {
+const History = ({ matches, name }) => {
   
   return (
     <div>
@@ -15,7 +15,7 @@ const History = ({ matches, name, teams }) => {
           );
 
           return (
-            <div>
+            <div key={match._id}>
               <div
                 style={{
                   display: "flex",

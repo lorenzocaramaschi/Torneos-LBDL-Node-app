@@ -1,6 +1,18 @@
-import Head from 'next/head'
+import Head from "next/head";
+import { useEffect, useState } from "react";
+import NewsCard from "./components/news/NewsCard";
 
-export default function Home() {
+export const getStaticProps = async () => {
+  const response = await fetch(`${process.env.host}/noticias`);
+  const data = await response.json();
+  return {
+    props: {
+      news: data,
+    },
+  };
+};
+
+export default function Home({ news }) {
   return (
     <>
       <Head>
@@ -10,9 +22,16 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-      <img width='123rem' height='123rem' src="https://i.imgur.com/j6itbSk.png" />
+        <img
+          width="123rem"
+          height="123rem"
+          src="https://i.imgur.com/j6itbSk.png"
+        />
         <h1>Torneos de La Banda del Lobo</h1>
+        <div>
+          <NewsCard allNews={news} />
+        </div>
       </main>
     </>
-  )
+  );
 }

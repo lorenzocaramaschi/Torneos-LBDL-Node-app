@@ -2,7 +2,7 @@ import { Circle } from "@mui/icons-material";
 import React from "react";
 
 const WinningStreak = (data) => {
-  let teamMatchesClone = data.teamMatches;  
+  let teamMatchesClone = data.teamMatches;
   let name = data.teamName;
   return (
     <>
@@ -11,6 +11,7 @@ const WinningStreak = (data) => {
           if (match.homeScore > match.awayScore && name === match.home) {
             return (
               <div
+                key={match._id}
                 style={{
                   display: "flex",
                   justifyContent: "center",
@@ -24,6 +25,7 @@ const WinningStreak = (data) => {
           } else if (match.homeScore < match.awayScore && name === match.away) {
             return (
               <div
+                key={match._id}
                 style={{
                   display: "flex",
                   justifyContent: "center",
@@ -38,6 +40,7 @@ const WinningStreak = (data) => {
           if (match.homeScore > match.awayScore && name === match.home) {
             return (
               <div
+                key={match._id}
                 style={{
                   display: "flex",
                   justifyContent: "center",
@@ -51,6 +54,7 @@ const WinningStreak = (data) => {
           } else if (match.homeScore < match.awayScore && name === match.away) {
             return (
               <div
+                key={match._id}
                 style={{
                   display: "flex",
                   justifyContent: "center",
@@ -64,6 +68,7 @@ const WinningStreak = (data) => {
           } else if (match.homeScore === match.awayScore) {
             return (
               <div
+                key={match._id}
                 style={{
                   display: "flex",
                   justifyContent: "center",
@@ -77,6 +82,7 @@ const WinningStreak = (data) => {
           } else {
             return (
               <div
+                key={match._id}
                 style={{
                   display: "flex",
                   justifyContent: "center",
