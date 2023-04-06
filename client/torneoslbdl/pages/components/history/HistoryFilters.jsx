@@ -21,7 +21,8 @@ const HistoryFilters = (
     <>
       <div>
         <div>
-          Filtrar por: <FilterAltOutlined />
+          <FilterAltOutlined />
+          Filtrar por:
         </div>
         <div>
           <label>
