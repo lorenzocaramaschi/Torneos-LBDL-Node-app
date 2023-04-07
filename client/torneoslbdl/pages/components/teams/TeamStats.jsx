@@ -16,8 +16,8 @@ const TeamStats = (data) => {
   return (
     <>
       <div>
-        <h2>Estadísticas</h2>
-        <div>
+        <h2 style={{textAlign: "center", color: "#6568A6", fontSize: "48px"}}>Estadísticas</h2>
+        <div style={{backgroundColor: "#DFDFDF", color: "#6568A6", borderRadius: "14px", padding: "0.5rem", fontSize: "20px", fontWeight: "bold"}}>
           <p>Partidos jugados: {teamMatches.length}</p>
           <p>Partidos ganados: {wins}</p>
           <p>Partidos empatados: {ties}</p>

@@ -12,8 +12,8 @@ const HistoryAgainstRival = ({ name, historyAgainstRival, rival }) => {
   };
   return (
     <>
-      <h3>
-        {name} vs {rival}{" "}
+      <h3 style={{color: "#6568A6", fontSize: "40px"}}>
+        vs {rival}{" "}
       </h3>
       {resetHistoryParams()}
       {historyAgainstRival.map((match) => {
@@ -29,19 +29,19 @@ const HistoryAgainstRival = ({ name, historyAgainstRival, rival }) => {
       })}
       {winsVsRival > lossesVsRival ? (
         <div className="winning-history">
-          <p>
+          <p style={{color: "white", fontSize: "24px"}}>
             {winsVsRival}-{tiesVsRival}-{lossesVsRival}
           </p>
         </div>
       ) : lossesVsRival > winsVsRival ? (
         <div className="losing-history">
-          <p>
+          <p style={{color: "white", fontSize: "24px"}}>
             {winsVsRival}-{tiesVsRival}-{lossesVsRival}
           </p>
         </div>
       ) : (
         <div className="tie-history">
-          <p>
+          <p style={{color: "white", fontSize: "24px"}}>
             {winsVsRival}-{tiesVsRival}-{lossesVsRival}
           </p>
         </div>

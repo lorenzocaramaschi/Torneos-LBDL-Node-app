@@ -49,8 +49,9 @@ export const Details = ({ teamMatches, allTeamData, name, tournaments }) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href={teamSelected[0].logo} />
       </Head>
-
-      <Team matches={teamMatches} team={teamSelected} />
+      <main>
+        <Team matches={teamMatches} team={teamSelected} />
+      </main>
     </>
   );
 };

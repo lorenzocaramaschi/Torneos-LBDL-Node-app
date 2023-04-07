@@ -1,18 +1,21 @@
 import React from "react";
 
-
 const LeaderboardHeader = () => {
   return (
-    <div style={{ display: "flex"}}>
-      <th>Equipos</th>
-      <th>Puntos</th>
-      <th>G</th>
-      <th>E</th>
-      <th>P</th>
-      <th>GF</th>
-      <th>GC</th>
-      <th>+/-</th>
-    </div>
+    <thead>
+      <tr>
+        <th>Puesto</th>
+        <th>Equipo</th>
+        <th>Pts</th>
+        <th>PJ</th>
+        <th>G</th>
+        <th>E</th>
+        <th>P</th>
+        <th>GF</th>
+        <th>GC</th>
+        <th>DIF</th>
+      </tr>
+    </thead>
   );
 };
 

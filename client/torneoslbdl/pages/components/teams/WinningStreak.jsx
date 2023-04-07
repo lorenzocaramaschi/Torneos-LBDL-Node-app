@@ -19,7 +19,7 @@ const WinningStreak = (data) => {
                 }}
               >
                 <Circle className="winning-circle" />
-                <p style={{ position: "absolute" }}>G</p>
+                <p style={{ position: "absolute", color: "white" }}>G</p>
               </div>
             );
           } else if (match.homeScore < match.awayScore && name === match.away) {
@@ -33,7 +33,7 @@ const WinningStreak = (data) => {
                 }}
               >
                 <Circle className="winning-circle" />
-                <p style={{ position: "absolute" }}>G</p>
+                <p style={{ position: "absolute", color: "white" }}>G</p>
               </div>
             );
           }
@@ -48,7 +48,7 @@ const WinningStreak = (data) => {
                 }}
               >
                 <Circle className="winning-circle" />
-                <p style={{ position: "absolute" }}>G</p>
+                <p style={{ position: "absolute", color: "white" }}>G</p>
               </div>
             );
           } else if (match.homeScore < match.awayScore && name === match.away) {
@@ -62,7 +62,7 @@ const WinningStreak = (data) => {
                 }}
               >
                 <Circle className="winning-circle" />
-                <p style={{ position: "absolute" }}>G</p>
+                <p style={{ position: "absolute", color: "white" }}>G</p>
               </div>
             );
           } else if (match.homeScore === match.awayScore) {
@@ -76,7 +76,7 @@ const WinningStreak = (data) => {
                 }}
               >
                 <Circle className="tie-circle" />
-                <p style={{ position: "absolute" }}>E</p>
+                <p style={{ position: "absolute", color: "white" }}>E</p>
               </div>
             );
           } else {
@@ -90,7 +90,7 @@ const WinningStreak = (data) => {
                 }}
               >
                 <Circle className="losing-circle" />
-                <p style={{ position: "absolute" }}>P</p>
+                <p style={{ position: "absolute", color: "white" }}>P</p>
               </div>
             );
           }

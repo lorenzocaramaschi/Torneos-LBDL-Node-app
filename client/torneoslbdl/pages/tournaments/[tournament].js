@@ -29,19 +29,15 @@ export const getStaticProps = async (context) => {
     (tournamentEl) => tournamentEl.name === name
   );
 
-
   return {
     props: {
-      tournamentMatches: data,      
-      tournament: tournament,     
+      tournamentMatches: data,
+      tournament: tournament,
     },
   };
 };
 
-const Details = ({
-  tournament,
-  tournamentMatches,
-}) => {
+const Details = ({ tournament, tournamentMatches }) => {
   return (
     <>
       <Head>
@@ -50,7 +46,7 @@ const Details = ({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href={tournament[0].logo} />
       </Head>
-      <div>
+      <main>
         <img width="169rem" src={tournament[0].logo} />
         <h1>{tournament[0].name}</h1>
         <TournamentStats
@@ -58,7 +54,7 @@ const Details = ({
           tournamentMatches={tournamentMatches}
         />
         <TournamentMatches tournamentMatches={tournamentMatches} />
-      </div>
+      </main>
     </>
   );
 };

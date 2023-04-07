@@ -20,11 +20,26 @@ const HistoryFilters = (
   return (
     <>
       <div>
-        <div>
-          <FilterAltOutlined />
+        <div
+          style={{
+            paddingLeft: "0.5rem",
+            borderRadius: "14px",
+            backgroundColor: "#DFDFDF",
+            color: "#BFC0D9",
+            fontWeight: "bold",
+          }}
+        >
+          <FilterAltOutlined style={{ color: "#BFC0D9" }} />
           Filtrar por:
         </div>
-        <div>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(3,1fr)",
+            gap: "5px",
+            margin: "1rem 0",
+          }}
+        >
           <label>
             Rival
             <select onChange={data.filteringRival} value={data.rival}>
@@ -95,9 +110,24 @@ const HistoryFilters = (
             </select>
           </label>
         </div>
-        <button type="button" onClick={data.resetFilter}>
-          REINICIAR FILTROS
-        </button>
+        <div style={{display: "flex", justifyContent: "center"}}>
+          <button
+            style={{
+              border: "none",
+              backgroundColor: "#6568A6",
+              borderRadius: "14px",
+              color: "white",
+              fontWeight: "bold",
+              padding: "0.5rem",
+              display: "flex",
+              marginBottom: "1rem"
+            }}
+            type="button"
+            onClick={data.resetFilter}
+          >
+            REINICIAR FILTROS
+          </button>
+        </div>
       </div>
     </>
   );

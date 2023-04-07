@@ -41,7 +41,7 @@ const Match = ({ match }) => {
             height={24}
           />
         )}
-        <p>{match.tournament}</p>
+        <p style={{fontSize: "15px", fontWeight: "bold", color: "#6568A6"}}>{match.tournament}</p>
       </div>
       <div>
         <div className="team-score">
@@ -54,10 +54,10 @@ const Match = ({ match }) => {
                 height={24}
               />
             )}
-            <p>{match.home}</p>
+            <p style={{color: "black", fontWeight: "bold", fontSize: "20px"}}>{match.home}</p>
           </div>
           {match.homeScore > match.awayScore ? (
-            <p>
+            <p style={{color: "black", fontWeight: "bold", fontSize: "20px"}}>
               {match.homeScore}
               <ArrowLeft
                 style={{
@@ -67,7 +67,7 @@ const Match = ({ match }) => {
               />
             </p>
           ) : (
-            <p>{match.homeScore}</p>
+            <p style={{color: "black", fontWeight: "bold", fontSize: "20px"}}>{match.homeScore}</p>
           )}
         </div>
         <Divider className="divider" />
@@ -81,10 +81,10 @@ const Match = ({ match }) => {
                 height={24}
               />
             )}
-            <p>{match.away}</p>
+            <p style={{color: "black", fontWeight: "bold", fontSize: "20px"}}>{match.away}</p>
           </div>
           {match.homeScore < match.awayScore ? (
-            <p>
+            <p style={{color: "black", fontWeight: "bold", fontSize: "20px"}}>
               {match.awayScore}
               <ArrowLeft
                 style={{
@@ -94,7 +94,7 @@ const Match = ({ match }) => {
               />
             </p>
           ) : (
-            <p>{match.awayScore}</p>
+            <p style={{color: "black", fontWeight: "bold", fontSize: "20px"}}>{match.awayScore}</p>
           )}
         </div>
       </div>

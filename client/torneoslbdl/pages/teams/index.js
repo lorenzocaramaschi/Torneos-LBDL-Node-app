@@ -20,13 +20,15 @@ const teamsScene = ({ teams }) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <img
-        width="123rem"
-        height="123rem"
-        src="https://i.imgur.com/j6itbSk.png"
-      />
-      <h1>Equipos de La Banda del Lobo</h1>
-     <Teams teams={teams} />
+      <main>
+        <img
+          width="123rem"
+          height="123rem"
+          src="https://i.imgur.com/j6itbSk.png"
+        />
+        <h1>Equipos de La Banda del Lobo</h1>
+        <Teams teams={teams} />
+      </main>
     </>
   );
 };

@@ -183,13 +183,23 @@ const Team = (team) => {
 
   return (
     <>
-      <div>
-        <Image src={logo} alt={name} width={169} height={169} />
-        <h1>{name}</h1>
+      <main>
+        <Image
+          style={{ marginTop: "2rem" }}
+          src={logo}
+          alt={name}
+          width={169}
+          height={169}
+        />
+        <h1 style={{ fontSize: "64px" }}>{name}</h1>
         <WinningStreak teamMatches={team.matches.data} teamName={name} />
-        <h4>Historial</h4>
+        <h4 style={{ fontSize: "16px", color: "#6568A6", fontWeight: "bold" }}>
+          Historial
+        </h4>
         <HistoryRecord teamName={name} teamMatches={team.matches.data} />
-        <h2>Historiales</h2>
+        <h2 style={{ marginTop: "1rem",textAlign: "center", color: "#6568A6", fontSize: "48px" }}>
+          Historiales
+        </h2>
         <HistoryFilters
           data={team.matches.data}
           teamName={name}
@@ -206,7 +216,7 @@ const Team = (team) => {
           resetFilter={resetFilter}
         />
         <History name={name} matches={teamHistory} />
-      </div>
+      </main>
     </>
   );
 };

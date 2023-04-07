@@ -26,9 +26,9 @@ const HistoryRecord = (data) => {
             losses++;
           }
         })}
-        <p>{wins}-</p>
-        <p>{ties}-</p>
-        <p>{losses}</p>
+        <p style={{color: "white"}}>{wins}-</p>
+        <p style={{color: "white"}}>{ties}-</p>
+        <p style={{color: "white"}}>{losses}</p>
       </div>
       <div>
         <TeamStats data={data} wins={wins} ties={ties} losses={losses}/>

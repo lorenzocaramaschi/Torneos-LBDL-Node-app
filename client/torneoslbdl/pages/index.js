@@ -28,9 +28,8 @@ export default function Home({ news }) {
           src="https://i.imgur.com/j6itbSk.png"
         />
         <h1>Torneos de La Banda del Lobo</h1>
-        <div>
-          <NewsCard allNews={news} />
-        </div>
+
+        <NewsCard allNews={news} />
       </main>
     </>
   );

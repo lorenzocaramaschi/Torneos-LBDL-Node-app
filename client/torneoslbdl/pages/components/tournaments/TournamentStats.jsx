@@ -1,6 +1,6 @@
 import React from "react";
 
-const TournamentStats = ({tournamentMatches, tournament}) => {
+const TournamentStats = ({ tournamentMatches, tournament }) => {
   let tournamentGoals = 0;
   tournamentMatches.data.map((match) => {
     let matchGoals = match.awayScore + match.homeScore;
@@ -9,8 +9,10 @@ const TournamentStats = ({tournamentMatches, tournament}) => {
 
   return (
     <>
-      <h2>Estadísticas</h2>
-      <div>
+      <h2 style={{ color: "#6568A6", fontSize: "48px", textAlign: "center" }}>
+        Estadísticas
+      </h2>
+      <div style={{backgroundColor: "#DFDFDF", borderRadius: "14px", padding: "24px", color: "#6568A6", fontSize: "18px", fontWeight: "bold"}}>
         <p>Goles anotados: {tournamentGoals}</p>
         <p>
           Promedio de gol por partido:{" "}
