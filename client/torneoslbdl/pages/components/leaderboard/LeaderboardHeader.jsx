@@ -2,7 +2,7 @@ import React from "react";
 
 const LeaderboardHeader = () => {
   return (
-    <thead>
+    <thead style={{backgroundColor: "#67669A"}}>
       <tr>
         <th>Puesto</th>
         <th>Equipo</th>

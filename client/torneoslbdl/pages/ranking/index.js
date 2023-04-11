@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import Head from "next/head";
 import Leaderboard from "../components/leaderboard/Leaderboard";
 import Fixture from "../components/leaderboard/Fixture";
+import LeaderboardFilter from "../components/leaderboard/LeaderboardFilter";
 
 export const getStaticProps = async () => {
   const response = await fetch(`${process.env.host}/equipos`);
@@ -19,6 +20,21 @@ export const getStaticProps = async () => {
 };
 
 const Ranking = ({ teams, matches }) => {
+  const [year, setYear] = useState("2023");
+
+  const filteringYear = (e) => {
+    const year = e.target.value;
+    setYear(year);
+
+    year === "2023"
+      ? console.log(year)
+      : year === "2021"
+      ? console.log(year)
+      : year === "2020"
+      ? console.log(year)
+      : console.log(year);
+  };
+
   return (
     <>
       <Head>
@@ -33,7 +49,8 @@ const Ranking = ({ teams, matches }) => {
           width="123rem"
           height="123rem"
         />
-        <h1 style={{fontSize: "64px"}}>Ranking</h1>
+        <h1 style={{ fontSize: "64px" }}>Ranking</h1>
+        <LeaderboardFilter year={year} filteringYear={filteringYear} />
         <Leaderboard matches={matches.data} teams={teams.data} />
         <Fixture matches={matches.data} />
       </main>

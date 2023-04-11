@@ -106,7 +106,7 @@ const Match = ({ match }) => {
           <iframe
             width="140rem"
             height="100rem"
-            src={match.video + "&showinfo=0&controls=0&autohide=1"}
+            src={match.video}
             title={`${match.home} vs ${match.away}`}
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 
 const LeaderboardRows = ({ matches }) => {
-  console.log(matches);
   const [filter, setFilter] = useState([]);
   const [wins, setWins] = useState(0);
   const [draws, setDraws] = useState(0);
@@ -12,7 +11,7 @@ const LeaderboardRows = ({ matches }) => {
   return (
     <>
       {matches.map((match) => (
-        <tr>
+        <tr key={match._id}>
           <th>{matches.length - 6}</th>
           <th>{match.home}</th>
           <th>

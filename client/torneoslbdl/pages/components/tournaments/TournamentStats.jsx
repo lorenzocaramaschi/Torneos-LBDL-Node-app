@@ -1,3 +1,5 @@
+import { PlayArrow } from "@mui/icons-material";
+import Link from "next/link";
 import React from "react";
 
 const TournamentStats = ({ tournamentMatches, tournament }) => {
@@ -23,7 +25,7 @@ const TournamentStats = ({ tournamentMatches, tournament }) => {
         ) : (
           <p>
             Playlist:{" "}
-            <Link href={tournament[0].playlist} key={tournament[0]._id}>
+            <Link target="_blank" href={tournament[0].playlist} key={tournament[0]._id}>
               <PlayArrow />
             </Link>
           </p>

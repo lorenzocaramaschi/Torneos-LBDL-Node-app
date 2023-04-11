@@ -7,14 +7,14 @@ const Fixture = ({ matches }) => {
 
   return (
     <>
-      <h2>Fixture</h2>
-      <div style={{ display: "flex" }}>
+      <h2 style={{ color: "#6568A6", fontSize: "48px", textAlign: "center" }}>Fixture</h2>
+      <div style={{ display: "flex", color: "white", backgroundColor: "#67669A", fontWeight: "bold", fontSize: "24px", alignItems: "center", borderRadius: "15px" }}>
         <ArrowLeftOutlined onClick={() => setRound(round - 1)} />
         Jornada {round}
         <ArrowRightOutlined onClick={() => setRound(round + 1)} />
       </div>
       {matches.map((match) => (
-        <Match match={match} />
+        <Match key={match._id} match={match} />
       ))}
     </>
   );

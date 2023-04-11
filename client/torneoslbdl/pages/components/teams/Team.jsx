@@ -184,8 +184,7 @@ const Team = (team) => {
   return (
     <>
       <main>
-        <Image
-          style={{ marginTop: "2rem" }}
+        <Image          
           src={logo}
           alt={name}
           width={169}

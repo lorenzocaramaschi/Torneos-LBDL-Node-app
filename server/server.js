@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 import config from "./config/config.js";
 import errorMiddleware from "./middlewares/error.middleware.js";
 import router from "./routes/index.js";
-import cors from 'cors'
+import cors from "cors";
 
 const app = express();
 const PORT = config.PORT || 3001;
@@ -11,9 +11,9 @@ const HOST = config.HOST;
 
 app.use(json());
 app.use(urlencoded({ extended: true }));
-app.use(cors())
+app.use(cors());
 
-app.use("/",router);
+app.use("/", router);
 
 app.use(errorMiddleware);
 
@@ -26,5 +26,5 @@ app.listen(PORT, (err) => {
     console.log(`Error intializing server ${JSON.stringify(err)}`);
   }
 
-  console.log(`Server listening: ${HOST}`);
+  console.log(`Server listening port: ${PORT}`);
 });
