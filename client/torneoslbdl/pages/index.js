@@ -1,6 +1,5 @@
 import Head from "next/head";
-import { useEffect, useState } from "react";
-import NewsCard from "./components/news/NewsCard";
+import NewsCard from "../components/news/NewsCard";
 import Image from "next/image";
 
 export const getStaticProps = async () => {

@@ -15,26 +15,6 @@ const createMatch = async (createMatchRequest) => {
       round,
       friendly,
     } = createMatchRequest;
-    const existingMatch = await matchDao.findMatchByFilter({
-      home,
-      away,
-      homeScore,
-      awayScore,
-      penalties,
-      homePenalties,
-      awayPenalties,
-      video,
-      tournament,
-      round,
-      friendly,
-    });
-
-    if (existingMatch) {
-      throw {
-        message: "The match you want to create already exists",
-        status: 400,
-      };
-    }
 
     const createdMatch = await matchDao.createMatch(createMatchRequest);
 

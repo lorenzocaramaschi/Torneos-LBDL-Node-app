@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Team from "../components/teams/Team";
+import Team from "../../components/teams/Team";
 
 export const getStaticPaths = async () => {
   const res = await fetch(`${process.env.host}/equipos`);

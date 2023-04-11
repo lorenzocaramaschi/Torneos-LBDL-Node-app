@@ -1,5 +1,5 @@
 import Head from "next/head";
-import News from "../components/news/News";
+import News from "../../components/news/News" ;
 
 export const getStaticPaths = async () => {
   const res = await fetch(`${process.env.host}/noticias`);

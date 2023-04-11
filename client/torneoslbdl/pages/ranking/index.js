@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import Head from "next/head";
-import Leaderboard from "../components/leaderboard/Leaderboard";
-import Fixture from "../components/leaderboard/Fixture";
-import LeaderboardFilter from "../components/leaderboard/LeaderboardFilter";
+import Leaderboard from "../../components/leaderboard/Leaderboard";
+import Fixture from "../../components/leaderboard/Fixture";
+import LeaderboardFilter from "../../components/leaderboard/LeaderboardFilter";
 import Image from "next/image";
 
 export const getStaticProps = async () => {

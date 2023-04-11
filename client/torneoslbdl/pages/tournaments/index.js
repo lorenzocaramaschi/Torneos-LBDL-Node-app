@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Tournaments from "../components/tournaments/Tournaments";
+import Tournaments from "../../components/tournaments/Tournaments";
 import Image from "next/image";
 
 export const getStaticProps = async () => {
