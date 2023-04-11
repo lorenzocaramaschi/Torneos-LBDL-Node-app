@@ -3,6 +3,7 @@ import Head from "next/head";
 import Leaderboard from "../components/leaderboard/Leaderboard";
 import Fixture from "../components/leaderboard/Fixture";
 import LeaderboardFilter from "../components/leaderboard/LeaderboardFilter";
+import Image from "next/image";
 
 export const getStaticProps = async () => {
   const response = await fetch(`${process.env.host}/equipos`);
@@ -44,10 +45,11 @@ const Ranking = ({ teams, matches }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <img
+        <Image
+          alt="ranking logo"
           src="https://i.imgur.com/efMVcQt.png"
-          width="123rem"
-          height="123rem"
+          width="123"
+          height="123"
         />
         <h1 style={{ fontSize: "64px" }}>Ranking</h1>
         <LeaderboardFilter year={year} filteringYear={filteringYear} />

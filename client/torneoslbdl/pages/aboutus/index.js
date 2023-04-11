@@ -1,5 +1,6 @@
 import { GitHub, Instagram, LinkedIn, YouTube } from "@mui/icons-material";
 import Head from "next/head";
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
@@ -13,10 +14,11 @@ const AboutUs = () => {
         <link rel="icon" href="https://i.imgur.com/j6itbSk.png" />
       </Head>
       <main>
-        <img
-          width="123rem"
-          height="123rem"
+        <Image
+          width="123"
+          height="123"
           src="https://i.imgur.com/j6itbSk.png"
+          alt="torneos lbdl logo"
         />
         <h1>Sobre Torneos LBDL</h1>
         <div
@@ -78,10 +80,14 @@ const AboutUs = () => {
             <LinkedIn sx={{ fontSize: 35 }} />
           </Link>
         </div>
-        <svg style={{position: "absolute", bottom: 0, zIndex: -1}} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+        <svg
+          style={{ position: "absolute", bottom: 0, zIndex: -1 }}
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 1440 320"
+        >
           <path
             fill="#67669A"
-            fillOpacity="1"           
+            fillOpacity="1"
             d="M0,320L48,288C96,256,192,192,288,181.3C384,171,480,213,576,197.3C672,181,768,107,864,80C960,53,1056,75,1152,80C1248,85,1344,75,1392,69.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
           ></path>
         </svg>

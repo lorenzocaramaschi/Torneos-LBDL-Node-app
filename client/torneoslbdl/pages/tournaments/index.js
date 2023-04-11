@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Tournaments from "../components/tournaments/Tournaments";
+import Image from "next/image";
 
 export const getStaticProps = async () => {
   const response = await fetch(`${process.env.host}/torneos`);
@@ -21,9 +22,10 @@ const tournamentsScene = ({ tournaments }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <img
-          width="123rem"
-          height="123rem"
+        <Image
+          alt="torneos lbdl logo"
+          width="123"
+          height="123"
           src="https://i.imgur.com/j6itbSk.png"
         />
         <h1>Torneos de La Banda del Lobo</h1>

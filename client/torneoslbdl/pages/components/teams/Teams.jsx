@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
@@ -16,7 +17,7 @@ const Teams = (teams) => {
       href={`/teams/${team.name}`}
       key={team._id}
     >
-      <img src={team.logo} width="25%" />
+      <Image src={team.logo} alt={team.name} width="100" height="100" />
       <h3 style={{ fontSize: "64px", fontWeight: "bold", color: "#6568A6", marginLeft: "1.25rem" }}>
         {team.name}
       </h3>

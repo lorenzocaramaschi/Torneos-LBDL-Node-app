@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { useEffect, useState } from "react";
 import NewsCard from "./components/news/NewsCard";
+import Image from "next/image";
 
 export const getStaticProps = async () => {
   const response = await fetch(`${process.env.host}/noticias`);
@@ -22,10 +23,11 @@ export default function Home({ news }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <img
-          width="123rem"
-          height="123rem"
+        <Image
+          width="123"
+          height="123"
           src="https://i.imgur.com/j6itbSk.png"
+          alt="torneos lbdl logo"
         />
         <h1>Torneos de La Banda del Lobo</h1>
 

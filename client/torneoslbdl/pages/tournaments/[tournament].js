@@ -1,6 +1,7 @@
 import Head from "next/head";
 import TournamentStats from "../components/tournaments/TournamentStats";
 import TournamentMatches from "../components/tournaments/TournamentMatches";
+import Image from "next/image";
 
 export const getStaticPaths = async () => {
   const res = await fetch(`${process.env.host}/torneos`);
@@ -47,7 +48,11 @@ const Details = ({ tournament, tournamentMatches }) => {
         <link rel="icon" href={tournament[0].logo} />
       </Head>
       <main>
-        <img width="169rem" src={tournament[0].logo} />
+        <Image
+          alt={tournament[0].name}
+          width="169"
+          src={tournament[0].logo}
+        />
         <h1>{tournament[0].name}</h1>
         <TournamentStats
           tournament={tournament}
