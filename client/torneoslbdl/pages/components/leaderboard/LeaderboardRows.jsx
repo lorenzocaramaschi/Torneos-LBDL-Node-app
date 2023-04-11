@@ -10,7 +10,19 @@ const LeaderboardRows = ({ matches }) => {
 
   return (
     <>
-      {matches.map((match) => (
+    <tr>
+      <th>1</th>
+      <th>Random</th>
+      <th>33</th>
+      <th>11</th>
+      <th>11</th>
+      <th>0</th>
+      <th>0</th>
+      <th>33</th>
+      <th>0</th>
+      <th>33</th>
+    </tr>
+     {/*  {matches.map((match) => (
         <tr key={match._id}>
           <th>{matches.length - 6}</th>
           <th>{match.home}</th>
@@ -57,7 +69,7 @@ const LeaderboardRows = ({ matches }) => {
             {goalsAgainst}</th>
           <th>{goalsFor-goalsAgainst}</th>
         </tr>
-      ))}
+      ))} */}
     </>
   );
 };
