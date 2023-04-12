@@ -139,7 +139,10 @@ const Team = (team) => {
           team.matches.data.filter(
             (match) =>
               (match.home === name && match.homeScore > match.awayScore) ||
-              (match.away === name && match.homeScore < match.awayScore)
+              (match.away === name && match.homeScore < match.awayScore) ||
+              (match.away === name &&
+                match.homePenalties < match.awayPenalties) ||
+              (match.home === name && match.homePenalties > match.awayPenalties)
           )
         ) && <History matches={teamHistory} />
       : matches === "tied"
@@ -152,7 +155,10 @@ const Team = (team) => {
           team.matches.data.filter(
             (match) =>
               (match.home !== name && match.homeScore > match.awayScore) ||
-              (match.away !== name && match.homeScore < match.awayScore)
+              (match.away !== name && match.homeScore < match.awayScore) ||
+              (match.away === name &&
+                match.homePenalties > match.awayPenalties) ||
+              (match.home === name && match.homePenalties < match.awayPenalties)
           )
         ) && <History matches={teamHistory} />;
   };
@@ -184,19 +190,21 @@ const Team = (team) => {
   return (
     <>
       <main>
-        <Image          
-          src={logo}
-          alt={name}
-          width={169}
-          height={169}
-        />
+        <Image src={logo} alt={name} width={169} height={169} />
         <h1 style={{ fontSize: "64px" }}>{name}</h1>
         <WinningStreak teamMatches={team.matches.data} teamName={name} />
         <h4 style={{ fontSize: "16px", color: "#6568A6", fontWeight: "bold" }}>
           Historial
         </h4>
         <HistoryRecord teamName={name} teamMatches={team.matches.data} />
-        <h2 style={{ marginTop: "1rem",textAlign: "center", color: "#6568A6", fontSize: "48px" }}>
+        <h2
+          style={{
+            marginTop: "1rem",
+            textAlign: "center",
+            color: "#6568A6",
+            fontSize: "48px",
+          }}
+        >
           Historiales
         </h2>
         <HistoryFilters

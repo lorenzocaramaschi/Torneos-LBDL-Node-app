@@ -1,28 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import HistoryAgainstRival from "./HistoryAgainstRival";
 import Match from "../matches/Match";
 
 const History = ({ matches, name }) => {
-  let rivals = [];
+  const rivals = Array.from(
+    new Set(matches.flatMap((match) => [match.home, match.away]))
+  ).filter((rival) => rival !== name);
 
   return (
     <div>
       <div>
-        {matches.map((match) => {
-          let rival;
-          match.home === name
-            ? (rival = match.away) && rivals.includes(match.away)
-              ? rivals
-              : rivals.push(match.away)
-            : (rival = match.home) && rivals.includes(match.home)
-            ? rivals
-            : rivals.push(match.home);
-          let historyAgainstRival = matches.filter((match) => {
-            match.home === rival || match.away === rival;
-          });
+        {rivals.map((rival) => {
+          const historyAgainstRival = matches.filter(
+            (match) => match.home === rival || match.away === rival
+          );
 
           return (
-            <div key={match._id}>
+            <div key={rival}>
               <div
                 style={{
                   display: "flex",
@@ -41,7 +35,9 @@ const History = ({ matches, name }) => {
                 />
               </div>
               <div>
-                <Match match={match} />
+                {historyAgainstRival.map((match) => {
+                  return <Match key={match._id} match={match} />;
+                })}
               </div>
             </div>
           );

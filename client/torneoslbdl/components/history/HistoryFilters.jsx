@@ -17,6 +17,10 @@ const HistoryFilters = (
     resetFilter,
   }
 ) => {
+  const rivals = Array.from(
+    new Set(data.data.flatMap((match) => [match.home, match.away]))
+  ).filter((team) => team !== data.teamName);
+
   return (
     <>
       <div>
@@ -46,17 +50,11 @@ const HistoryFilters = (
               <option value="all" defaultValue>
                 Todos
               </option>
-              {data.data.map((match) => {
-                let rival;
-                match.home === data.teamName
-                  ? (rival = match.away)
-                  : (rival = match.home);
-                return (
-                  <option key={match._id} value={rival}>
-                    {rival}
-                  </option>
-                );
-              })}
+              {rivals.map((rival) => (
+                <option key={rival} value={rival}>
+                  {rival}
+                </option>
+              ))}
             </select>
           </label>
           <label>
@@ -110,7 +108,7 @@ const HistoryFilters = (
             </select>
           </label>
         </div>
-        <div style={{display: "flex", justifyContent: "center"}}>
+        <div style={{ display: "flex", justifyContent: "center" }}>
           <button
             style={{
               border: "none",
@@ -120,7 +118,7 @@ const HistoryFilters = (
               fontWeight: "bold",
               padding: "0.5rem",
               display: "flex",
-              marginBottom: "1rem"
+              marginBottom: "1rem",
             }}
             type="button"
             onClick={data.resetFilter}
