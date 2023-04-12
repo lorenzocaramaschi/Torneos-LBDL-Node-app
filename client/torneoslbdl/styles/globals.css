@@ -151,6 +151,7 @@ a {
 
 .streak-bubble {
   display: flex;
+  flex-direction: row-reverse;
   align-items: center;
   justify-content: center;
   margin: 1rem 0;
@@ -164,7 +165,7 @@ a {
   font-weight: bold;
   background-color: #67669a;
   border-radius: 15px;
-  width: 33%;
+  width: 40%;
   margin: auto;
   margin-bottom: 1rem;
 }

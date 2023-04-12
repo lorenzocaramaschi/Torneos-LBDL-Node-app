@@ -1,9 +1,11 @@
 import React from "react";
 
-const HistoryAgainstRival = ({ name, historyAgainstRival, rival }) => {
+const HistoryAgainstRival = ({ name, historyAgainstRival, rival,rivals }) => {
   let winsVsRival = 0;
   let lossesVsRival = 0;
   let tiesVsRival = 0;
+  console.log(historyAgainstRival);
+  console.log(rivals);
 
   const resetHistoryParams = () => {
     winsVsRival = 0;

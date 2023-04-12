@@ -16,12 +16,26 @@ const TeamStats = (data) => {
   return (
     <>
       <div>
-        <h2 style={{textAlign: "center", color: "#6568A6", fontSize: "48px"}}>Estadísticas</h2>
-        <div style={{backgroundColor: "#DFDFDF", color: "#6568A6", borderRadius: "14px", padding: "0.5rem", fontSize: "20px", fontWeight: "bold"}}>
+        <h2 style={{ textAlign: "center", color: "#6568A6", fontSize: "48px" }}>
+          Estadísticas
+        </h2>
+        <div
+          style={{
+            backgroundColor: "#DFDFDF",
+            color: "#6568A6",
+            borderRadius: "14px",
+            padding: "0.5rem",
+            fontSize: "20px",
+            fontWeight: "bold",
+          }}
+        >
           <p>Partidos jugados: {teamMatches.length}</p>
           <p>Partidos ganados: {wins}</p>
           <p>Partidos empatados: {ties}</p>
           <p>Partidos perdidos: {losses}</p>
+          <p>
+            Tasa de victorias: {((wins * 100) / teamMatches.length).toFixed()}%
+          </p>
           <p>
             Goles anotados:{" "}
             {teamMatches.map((match) => {
@@ -56,7 +70,10 @@ const TeamStats = (data) => {
             Torneos jugados:{" "}
             {teamMatches.map((match) => {
               let tournamentSelected = match.tournament;
-              if (tournamentSelected === tournamentSelectedB) {
+              if (
+                tournamentSelected === tournamentSelectedB ||
+                match.friendly === true
+              ) {
               } else {
                 tournamentsPlayed++;
                 tournamentSelectedB = tournamentSelected;
@@ -79,11 +96,20 @@ const TeamStats = (data) => {
                     match.homeScore < match.awayScore
                   ) {
                     tournamentsWon++;
+                  } else if (
+                    name === match.away &&
+                    match.homePenalties < match.awayPenalties
+                  ) {
+                    tournamentsWon++;
+                  } else if (
+                    name === match.home &&
+                    match.homePenalties > match.awayPenalties
+                  ) {
+                    tournamentsWon++;
                   } else {
                     tournamentsWon;
                   }
-                  return tournamentsWon;
-                })}
+                }) && tournamentsWon}
           </p>
         </div>
       </div>

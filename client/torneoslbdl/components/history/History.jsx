@@ -3,16 +3,23 @@ import HistoryAgainstRival from "./HistoryAgainstRival";
 import Match from "../matches/Match";
 
 const History = ({ matches, name }) => {
-  
+  let rivals = [];
+
   return (
     <div>
       <div>
         {matches.map((match) => {
           let rival;
-          match.home === name ? (rival = match.away) : (rival = match.home);
-          let historyAgainstRival = matches.filter(
-            (matchEl) => matchEl.home === rival || matchEl.away === rival
-          );
+          match.home === name
+            ? (rival = match.away) && rivals.includes(match.away)
+              ? rivals
+              : rivals.push(match.away)
+            : (rival = match.home) && rivals.includes(match.home)
+            ? rivals
+            : rivals.push(match.home);
+          let historyAgainstRival = matches.filter((match) => {
+            match.home === rival || match.away === rival;
+          });
 
           return (
             <div key={match._id}>
@@ -30,6 +37,7 @@ const History = ({ matches, name }) => {
                   rival={rival}
                   historyAgainstRival={historyAgainstRival}
                   name={name}
+                  rivals={rivals}
                 />
               </div>
               <div>
