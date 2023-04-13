@@ -6,34 +6,47 @@ import LeaderboardFilter from "../../components/leaderboard/LeaderboardFilter";
 import Image from "next/image";
 
 export const getStaticProps = async () => {
-  const response = await fetch(`${process.env.host}/equipos`);
-  const data = await response.json();
-
   const res = await fetch(`${process.env.host}/partidos`);
   const allMatches = await res.json();
 
   return {
     props: {
-      teams: data,
       matches: allMatches,
     },
   };
 };
 
-const Ranking = ({ teams, matches }) => {
+const Ranking = ({ matches }) => {
   const [year, setYear] = useState("2023");
-
+  const [tournamentMatches, setTournamentMatches] = useState(
+    matches.data.filter((match) => match.year === 2023)
+  );
   const filteringYear = (e) => {
     const year = e.target.value;
     setYear(year);
+    console.log(year);
 
     year === "2023"
-      ? console.log(year)
+      ? setTournamentMatches(
+          matches.data.filter((match) => match.year === 2023)
+        )
+      : year === "2022"
+      ? setTournamentMatches(
+          matches.data.filter((match) => match.year === 2022)
+        )
       : year === "2021"
-      ? console.log(year)
+      ? setTournamentMatches(
+          matches.data.filter((match) => match.year === 2021)
+        )
       : year === "2020"
-      ? console.log(year)
-      : console.log(year);
+      ? setTournamentMatches(
+          matches.data.filter((match) => match.year === 2020)
+        )
+      : setTournamentMatches(
+          matches.data.filter((match) => match.year === 2019)
+        );
+
+        console.log(tournamentMatches);
   };
 
   return (
@@ -53,8 +66,8 @@ const Ranking = ({ teams, matches }) => {
         />
         <h1 style={{ fontSize: "64px" }}>Ranking</h1>
         <LeaderboardFilter year={year} filteringYear={filteringYear} />
-        <Leaderboard matches={matches.data} teams={teams.data} />
-        <Fixture matches={matches.data} />
+        <Leaderboard matches={tournamentMatches} />
+        <Fixture matches={tournamentMatches} />
       </main>
     </>
   );

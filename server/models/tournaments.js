@@ -3,8 +3,9 @@ import mongoose from "mongoose";
 const tournamentSchema = mongoose.Schema(
   {
     logo: String,
-    name: String,    
+    name: String,
     playlist: String,
+    year: Number,
   },
   {
     versionKey: false,

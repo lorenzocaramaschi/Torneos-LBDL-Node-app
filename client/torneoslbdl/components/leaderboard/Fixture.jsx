@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import Match from "../matches/Match";
 
 const Fixture = ({ matches }) => {
-  const tournament = matches.filter(match => match.tournament === "Amistosos")
   const [round, setRound] = useState(1);
 
   return (
@@ -14,7 +13,7 @@ const Fixture = ({ matches }) => {
         Jornada {round}
         <ArrowRightOutlined onClick={() => setRound(round + 1)} />
       </div>
-      {tournament.map((match) => (
+      {matches.map((match) => (
         <Match key={match._id} match={match} />
       ))}
     </>
