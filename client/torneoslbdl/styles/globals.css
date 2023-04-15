@@ -75,9 +75,9 @@ a {
   display: grid;
   padding: 0.75rem;
   grid-template-columns: repeat(2, 1fr);
-  background-color: #DFDFDF;
-  border-radius: 14px;  
-  margin: 0.5rem 0;  
+  background-color: #dfdfdf;
+  border-radius: 14px;
+  margin: 0.5rem 0;
   width: 100%;
 }
 
@@ -117,6 +117,25 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-around;
+}
+
+.logo-teams {
+  display: flex;
+  flex-direction: column;
+  color: #dfdfdf;
+  font-weight: bold;
+  font-size: 28px;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #6468a7;
+  border-radius: 24px;
+  padding: 1rem 0.25rem;
+  margin: 13px 0;
+  transition: 1s;
+}
+
+.logo-teams:hover {
+   transform: scale(1.1);
 }
 
 .navbar-Icon {
@@ -213,4 +232,3 @@ select option {
 .divider {
   background-color: #bfc0d9;
 }
-

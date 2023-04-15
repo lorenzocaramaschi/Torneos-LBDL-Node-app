@@ -22,7 +22,7 @@ await mongoose.connect(config.DB);
 console.log("Database connected!");
 
 app.listen(PORT, (err) => {
-  if (err) {
+  if (err) {  
     console.log(`Error intializing server ${JSON.stringify(err)}`);
   }
 

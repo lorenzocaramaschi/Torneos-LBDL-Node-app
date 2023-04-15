@@ -3,7 +3,6 @@ import LeaderboardHeader from "./LeaderboardHeader";
 import LeaderboardRows from "./LeaderboardRows";
 
 const Leaderboard = ({ matches }) => {
-  console.log(matches);
   return (
     <table
       style={{
@@ -14,7 +13,7 @@ const Leaderboard = ({ matches }) => {
         borderRadius: "5px",
       }}
     >
-        <LeaderboardHeader />
+      <LeaderboardHeader />
       <tbody>
         <LeaderboardRows matches={matches} />
       </tbody>

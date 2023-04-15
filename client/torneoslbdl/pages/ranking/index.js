@@ -19,34 +19,32 @@ export const getStaticProps = async () => {
 const Ranking = ({ matches }) => {
   const [year, setYear] = useState("2023");
   const [tournamentMatches, setTournamentMatches] = useState(
-    matches.data.filter((match) => match.year === 2023)
+    matches.data.filter((match) => match.year === "2023")
   );
+
   const filteringYear = (e) => {
     const year = e.target.value;
     setYear(year);
-    console.log(year);
 
     year === "2023"
       ? setTournamentMatches(
-          matches.data.filter((match) => match.year === 2023)
+          matches.data.filter((match) => match.year === "2023")
         )
       : year === "2022"
       ? setTournamentMatches(
-          matches.data.filter((match) => match.year === 2022)
+          matches.data.filter((match) => match.year === "2022")
         )
       : year === "2021"
       ? setTournamentMatches(
-          matches.data.filter((match) => match.year === 2021)
+          matches.data.filter((match) => match.year === "2021")
         )
       : year === "2020"
       ? setTournamentMatches(
-          matches.data.filter((match) => match.year === 2020)
+          matches.data.filter((match) => match.year === "2020")
         )
       : setTournamentMatches(
-          matches.data.filter((match) => match.year === 2019)
+          matches.data.filter((match) => match.year === "2019")
         );
-
-        console.log(tournamentMatches);
   };
 
   return (
