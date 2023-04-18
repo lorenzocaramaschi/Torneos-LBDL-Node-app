@@ -1,6 +1,6 @@
 {
   "name": "torneoslbdl",
-  "version": "7.0.0",
+  "version": "7.0.2",
   "private": true,
   "scripts": {
     "dev": "next dev",

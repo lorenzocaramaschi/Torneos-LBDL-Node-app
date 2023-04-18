@@ -3,7 +3,7 @@
  */
 const nextConfig = {
   env: {
-    host: "http://localhost:3001",
+    host: "https://torneoslbdl-backend.onrender.com",
     db_url:
       "mongodb+srv://lolo:<password>@cluster1.1szpisc.mongodb.net/?retryWrites=true&w=majority",
     port: 3001,
