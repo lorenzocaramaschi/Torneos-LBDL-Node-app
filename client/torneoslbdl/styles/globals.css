@@ -150,17 +150,17 @@ a {
 
 .winning-circle {
   color: #6568a6;
-  font-size: 37px;
+  font-size: 2rem;
 }
 
 .tie-circle {
   color: #bfc0d9;
-  font-size: 37px;
+  font-size: 2rem;
 }
 
 .losing-circle {
   color: #ec5353;
-  font-size: 37px;
+  font-size: 2rem;
 }
 
 .streak-bubble div p {
