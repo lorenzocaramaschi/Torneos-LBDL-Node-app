@@ -112,7 +112,11 @@ const LeaderboardRows = ({ matches }) => {
           <tr
             key={team}
             style={
-              index < 8
+              matches[0].tournament.includes("Draft")
+                ? index < 2
+                  ? { backgroundColor: "#49496d" }
+                  : {}
+                : index < 8
                 ? { backgroundColor: "black", color: "gold" }
                 : index > sortedTeams.length - 3
                 ? { backgroundColor: "#ec5353" }

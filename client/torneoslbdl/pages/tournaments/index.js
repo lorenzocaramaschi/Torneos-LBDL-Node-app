@@ -1,18 +1,42 @@
 import Head from "next/head";
 import Tournaments from "../../components/tournaments/Tournaments";
 import Image from "next/image";
+import TournamentsFilter from "@component/components/tournaments/TournamentsFilter";
+import { useState } from "react";
 
 export const getStaticProps = async () => {
   const response = await fetch(`${process.env.host}/torneos`);
   const data = await response.json();
   return {
     props: {
-      tournaments: data,
+      tournamentsData: data,
     },
   };
 };
 
-const tournamentsScene = ({ tournaments }) => {
+const tournamentsScene = ({ tournamentsData }) => {
+  const [tournaments, setTournaments] = useState(tournamentsData.data);
+  const [category, setCategory] = useState("all");
+
+  const filteringTournaments = (e) => {
+    const tournamentCategory = e.target.value;
+    setCategory(tournamentCategory);
+
+    tournamentCategory === "all"
+      ? setTournaments(tournamentsData.data)
+      : tournamentCategory === "drafts"
+      ? setTournaments(
+          tournamentsData.data.filter((tournament) =>
+            tournament.name.includes("Draft")
+          )
+        )
+      : setTournaments(
+          tournamentsData.data.filter((tournament) =>
+            tournament.name.includes("Torneo")
+          )
+        );
+  };
+
   return (
     <>
       <Head>
@@ -29,6 +53,10 @@ const tournamentsScene = ({ tournaments }) => {
           src="https://i.imgur.com/j6itbSk.png"
         />
         <h1>Torneos de La Banda del Lobo</h1>
+        <TournamentsFilter
+          filteringTournaments={filteringTournaments}
+          category={category}
+        />
         <Tournaments tournaments={tournaments} />
       </main>
     </>

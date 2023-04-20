@@ -28,22 +28,42 @@ const Ranking = ({ matches }) => {
 
     year === "2023"
       ? setTournamentMatches(
-          matches.data.filter((match) => match.year === "2023")
+          matches.data.filter(
+            (match) =>
+              match.year === "2023" &&
+              match.tournament.includes("Draft") === false
+          )
         )
       : year === "2022"
       ? setTournamentMatches(
-          matches.data.filter((match) => match.year === "2022")
+          matches.data.filter(
+            (match) =>
+              match.year === "2022" &&
+              match.tournament.includes("Draft") === false
+          )
         )
       : year === "2021"
       ? setTournamentMatches(
-          matches.data.filter((match) => match.year === "2021")
+          matches.data.filter(
+            (match) =>
+              match.year === "2021" &&
+              match.tournament.includes("Draft") === false
+          )
         )
       : year === "2020"
       ? setTournamentMatches(
-          matches.data.filter((match) => match.year === "2020")
+          matches.data.filter(
+            (match) =>
+              match.year === "2020" &&
+              match.tournament.includes("Draft") === false
+          )
         )
       : setTournamentMatches(
-          matches.data.filter((match) => match.year === "2019")
+          matches.data.filter(
+            (match) =>
+              match.year === "2019" &&
+              match.tournament.includes("Draft") === false
+          )
         );
   };
 

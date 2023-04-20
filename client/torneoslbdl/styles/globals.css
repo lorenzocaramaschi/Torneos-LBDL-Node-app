@@ -21,7 +21,7 @@ body {
 
 h1 {
   color: #0d0d0d;
-  font-size: 32px;
+  font-size: 64px;
   font-weight: bold;
   text-align: center;
 }
@@ -165,7 +165,7 @@ a {
 
 .streak-bubble div p {
   font-size: 20px;
-  font-weight: bold;
+  font-weight: 700;
 }
 
 .streak-bubble {

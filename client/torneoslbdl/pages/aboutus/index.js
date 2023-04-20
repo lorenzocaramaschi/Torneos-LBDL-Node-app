@@ -47,7 +47,7 @@ const AboutUs = () => {
             diversión.{" "}
           </p>
         </div>
-        <h3 style={{ color: "#6468A7", fontSize: "20px" }}>
+        <h3 style={{ color: "#67669A", fontSize: "20px" }}>
           Seguinos en nuestras redes!
         </h3>
         <div className="redes">
@@ -80,8 +80,9 @@ const AboutUs = () => {
             <LinkedIn sx={{ fontSize: 35 }} />
           </Link>
         </div>
+
         <svg
-          style={{ position: "absolute", bottom: 0, zIndex: -1 }}
+          style={{ position: "absolute", bottom: -267, zIndex: -2 }}
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 1440 320"
         >
@@ -91,7 +92,16 @@ const AboutUs = () => {
             d="M0,320L48,288C96,256,192,192,288,181.3C384,171,480,213,576,197.3C672,181,768,107,864,80C960,53,1056,75,1152,80C1248,85,1344,75,1392,69.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
           ></path>
         </svg>
-        <p style={{ bottom: "5px", position: "absolute", color: "#BFC0D9" }}>
+        <p
+          style={{
+            bottom: -260,
+            width: "100%",
+            textAlign: "center",
+            position: "absolute",
+            color: "#BFC0D9",
+            zIndex: -1
+          }}
+        >
           Made by Lorenzo Caramaschi©
         </p>
       </main>

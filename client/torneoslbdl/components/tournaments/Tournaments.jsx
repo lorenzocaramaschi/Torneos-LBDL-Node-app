@@ -2,8 +2,8 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-const Tournaments = (tournaments) => {
-  return tournaments.tournaments.data
+const Tournaments = ({ tournaments }) => {
+  return tournaments
     .filter((tournament) => tournament.name !== "Amistosos")
     .map((tournament) => (
       <Link
