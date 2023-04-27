@@ -2,13 +2,17 @@ import React, { useEffect, useState } from "react";
 import { ArrowLeftOutlined, ArrowRightOutlined } from "@mui/icons-material";
 import Match from "../matches/Match";
 
+// displays a navigation bar with arrow buttons and a label indicating the current round or match day
 const RoundSelector = ({ matches }) => {
+  // we track the current round or match day
   const [round, setRound] = useState(1);
 
+  // we generate an array of unique tournament names
   const tournaments = Array.from(
     new Set(matches.flatMap((match) => [match.tournament]))
   );
 
+  // this functions update the round state variable based on the current value and the tournaments array
   const nextRound = () => {
     if (round >= 3 && tournaments[0].includes("Draft")) {
       setRound(3);
@@ -21,7 +25,6 @@ const RoundSelector = ({ matches }) => {
       setRound(round + 1);
     }
   };
-
   const previousRound = () => {
     if (round <= 1 && tournaments[0].includes("Draft")) {
       setRound(1);
@@ -32,6 +35,7 @@ const RoundSelector = ({ matches }) => {
     }
   };
 
+  // use uffect hook for mounts and updates in the component
   useEffect(() => {
     nextRound();
   }, []);
@@ -53,6 +57,7 @@ const RoundSelector = ({ matches }) => {
           borderRadius: "15px",
         }}
       >
+        {/* This conditional says that if the tournament includes "Draft" then the Button should say "Fecha" instead of "Jornada", which is a subtle difference in Spanish, but you can change both to "Round" */}
         {matches[0].tournament.includes("Draft") ? (
           <>
             <ArrowLeftOutlined onClick={() => previousRound()} />
@@ -67,6 +72,7 @@ const RoundSelector = ({ matches }) => {
           </>
         )}
       </div>
+      {/* This piece of code also only applies to "Draft" tournaments, you can just ignore them */}
       {matches[0].tournament.includes("Draft")
         ? matches
             .filter((match) => match.round.includes(`Fecha ${round}`))

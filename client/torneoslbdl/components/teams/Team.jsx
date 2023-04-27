@@ -5,7 +5,9 @@ import WinningStreak from "./WinningStreak";
 import HistoryFilters from "../history/HistoryFilters";
 import History from "../history/History";
 
+// renders a team's profile, this includes: matches, history and stats.
 const Team = (team) => {
+  // we will need to manage several variables that we'll use in a History Filter
   const [rival, setRival] = useState("all");
   const [category, setCategory] = useState("all");
   const [history, setHistory] = useState("all");
@@ -13,8 +15,9 @@ const Team = (team) => {
   const [goalDifference, setGoalDifference] = useState("all");
   const [teamHistory, setTeamHistory] = useState(team.matches.data);
 
-  const { logo, name, _id } = team.team[0];
+  const { logo, name } = team.team[0]; // we get the logo and name of the team
 
+  // resets the filter
   const resetFilter = () => {
     setCategory("all");
     setGoalDifference("all");
@@ -26,6 +29,9 @@ const Team = (team) => {
     return <History name={name} matches={teamHistory} />;
   };
 
+  // here we have several filters that handle event changes in the value of the states declared before
+
+  // checks the category, whether its official or friendly
   const filteringCategory = (e) => {
     const category = e.target.value;
     setCategory(category);
@@ -42,6 +48,8 @@ const Team = (team) => {
           team.matches.data.filter((match) => match.friendly === false)
         ) && <History name={name} matches={teamHistory} />;
   };
+
+  // returns matches with the goal difference selected
   const filteringGoalDifference = (e) => {
     const goalDifference = e.target.value;
     setGoalDifference(goalDifference);
@@ -129,6 +137,7 @@ const Team = (team) => {
         ) && <History matches={teamHistory} />;
   };
 
+  // return matches where you won, tied, or lost, depending what the matches variable is
   const filteringMatches = (e) => {
     const matches = e.target.value;
     setMatches(matches);
@@ -162,6 +171,8 @@ const Team = (team) => {
           )
         ) && <History matches={teamHistory} />;
   };
+
+  // returns matches against an specific rival
   const filteringRival = (e) => {
     const rival = e.target.value;
     setRival(rival);
@@ -173,6 +184,8 @@ const Team = (team) => {
           )
         ) && <History matches={teamHistory} />;
   };
+
+  // this filter isn't working right now
   const filteringHistory = (e) => {
     const history = e.target.value;
     setHistory(history);
@@ -190,12 +203,16 @@ const Team = (team) => {
   return (
     <>
       <main>
+        {/* renders the team's logo */}
         <Image src={logo} alt={name} width={169} height={169} />
+        {/* renders the team's name */}
         <h1 style={{ fontSize: "64px" }}>{name}</h1>
+        {/* renders team's last 5 matches streak */}
         <WinningStreak teamMatches={team.matches.data} teamName={name} />
         <h4 style={{ fontSize: "16px", color: "#6568A6", fontWeight: "bold" }}>
           Historial
         </h4>
+        {/* returns the team's history of ALL its matches played in a won-tied-lost count */}
         <HistoryRecord teamName={name} teamMatches={team.matches.data} />
         <h2
           style={{
@@ -207,6 +224,7 @@ const Team = (team) => {
         >
           Historiales
         </h2>
+        {/* returns a filter manager for the matches the team has played, and we pass the specific states and functions we generated previously */}
         <HistoryFilters
           data={team.matches.data}
           teamName={name}
@@ -222,6 +240,7 @@ const Team = (team) => {
           filteringHistory={filteringHistory}
           resetFilter={resetFilter}
         />
+        {/* returns the team's history after being filtered */}
         <History name={name} matches={teamHistory} />
       </main>
     </>

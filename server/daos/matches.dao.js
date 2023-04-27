@@ -1,5 +1,9 @@
 import { Match } from "../models/index.js";
 
+// Here I believe that each function explains itself
+// To sum up, this arrow functions are Data Acces Objects
+// They take each model and make the requests to the database with the necessary mongodb methods for each case
+
 const createMatch = async (createMatchRequest) => {
   try {
     const createdMatch = await Match.create(createMatchRequest);
@@ -32,9 +36,9 @@ const deleteMatch = async (id) => {
 
 const findAllMatches = async () => {
   try {
-    const books = await Match.find();
+    const matches = await Match.find();
 
-    return books;
+    return matches;
   } catch (err) {
     console.log(err);
   }

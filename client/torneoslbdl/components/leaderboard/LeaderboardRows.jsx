@@ -1,10 +1,13 @@
 import React from "react";
 
+// generates the leaderboard table for a tournament
 const LeaderboardRows = ({ matches }) => {
+  // we extract a list of unique teams from the matches array.
   const teams = Array.from(
     new Set(matches.flatMap((match) => [match.home, match.away]))
   );
 
+  // then we sort this list of teams based on their scores, goal differences, and goals scored
   const sortedTeams = teams.sort((a, b) => {
     const aScore = matches.reduce(
       (acc, match) =>
@@ -92,7 +95,9 @@ const LeaderboardRows = ({ matches }) => {
 
   return (
     <>
+      {/* sorted teams then are mapped in a table row*/}
       {sortedTeams.map((team, index) => {
+        // here we calculate the points of each team
         const score = matches.reduce(
           (acc, match) =>
             (match.awayScore > match.homeScore && match.away === team) ||
@@ -112,11 +117,13 @@ const LeaderboardRows = ({ matches }) => {
           <tr
             key={team}
             style={
+              // Ignore this conditional. It says that if "Draft" is included in the name's tournament, only top 2 players will be styled differently
               matches[0].tournament.includes("Draft")
                 ? index < 2
                   ? { backgroundColor: "#49496d" }
                   : {}
-                : index < 8
+                : // you'll probably be using this, which states that last 3 teams are styled in red (relegation) and first 8 qualify for an special tournament and are styled in black
+                index < 8
                 ? { backgroundColor: "black", color: "gold" }
                 : index > sortedTeams.length - 3
                 ? { backgroundColor: "#ec5353" }

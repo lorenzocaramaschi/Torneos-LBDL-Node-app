@@ -1,6 +1,7 @@
 import React from "react";
 
-const HistoryAgainstRival = ({ name, historyAgainstRival, rival, rivals }) => {
+// renders a title with the rival's name and then maps over an array of historyAgainstRival objects to count the number of wins, losses, and ties that the current team (name) has against the rival
+const HistoryAgainstRival = ({ name, historyAgainstRival, rival }) => {
   let winsVsRival = 0;
   let lossesVsRival = 0;
   let tiesVsRival = 0;

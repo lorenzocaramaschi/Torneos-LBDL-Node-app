@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 
+// displays a list of tournaments with a link to each one of them (friendly tournaments aren't rendered in the list)
 const Tournaments = ({ tournaments }) => {
   return tournaments
     .filter((tournament) => tournament.name !== "Amistosos")

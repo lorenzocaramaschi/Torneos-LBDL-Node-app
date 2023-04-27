@@ -1,5 +1,6 @@
 import React from "react";
 
+// display team's statistics
 const TeamStats = (data) => {
   const name = data.data.teamName;
   let wins = data.wins;
@@ -29,14 +30,18 @@ const TeamStats = (data) => {
             fontWeight: "bold",
           }}
         >
-          <p>Partidos jugados: {teamMatches.length}</p>
-          <p>Partidos ganados: {wins}</p>
-          <p>Partidos empatados: {ties}</p>
-          <p>Partidos perdidos: {losses}</p>
+          <p>Partidos jugados: {teamMatches.length}</p> {/* matches played */}
+          <p>Partidos ganados: {wins}</p> {/* matches won */}
+          <p>Partidos empatados: {ties}</p> {/* '' tied */}
+          <p>Partidos perdidos: {losses}</p> {/* '' lost */}
           <p>
+            {" "}
+            {/* winrate */}
             Tasa de victorias: {((wins * 100) / teamMatches.length).toFixed()}%
           </p>
           <p>
+            {" "}
+            {/* goals scored */}
             Goles anotados:{" "}
             {teamMatches.map((match) => {
               if (name === match.home) {
@@ -48,6 +53,8 @@ const TeamStats = (data) => {
             {goalsScored}
           </p>
           <p>
+            {" "}
+            {/* goals against */}
             Goles recibidos:{" "}
             {teamMatches.map((match) => {
               if (name !== match.home) {
@@ -59,14 +66,20 @@ const TeamStats = (data) => {
             {goalsReceived}
           </p>
           <p>
+            {" "}
+            {/* goal per match average */}
             Promedio gol a favor por partido:{" "}
             {(goalsScored / teamMatches.length).toFixed(2)}
           </p>
           <p>
+            {" "}
+            {/* goal against average per match */}
             Promedio gol en contra por partido:{" "}
             {(goalsReceived / teamMatches.length).toFixed(2)}
           </p>
           <p>
+            {" "}
+            {/* tournaments played */}
             Torneos jugados:{" "}
             {teamMatches.map((match) => {
               let tournamentSelected = match.tournament;
@@ -82,6 +95,8 @@ const TeamStats = (data) => {
             {tournamentsPlayed}
           </p>
           <p>
+            {" "}
+            {/* tournaments won */}
             Torneos ganados:{" "}
             {finalsPlayed.length === 0
               ? (tournamentsWon = 0)

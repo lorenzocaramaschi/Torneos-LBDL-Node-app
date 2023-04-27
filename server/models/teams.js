@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 
+// IMPORTANT: TEAMS MUST HAVE UNIQUE NAMES, YOU CANNOT REPEAT THEM.
 const teamSchema = mongoose.Schema(
   {
     logo: String,

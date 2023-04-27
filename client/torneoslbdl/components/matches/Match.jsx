@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { ArrowLeft, PlayDisabled } from "@mui/icons-material";
+import { PlayDisabled } from "@mui/icons-material";
 import { Divider } from "@mui/material";
 import Image from "next/image";
 
+// displays information about a match
 const Match = ({ match }) => {
+  // manage state for the logos of the home and away teams and the tournament logos
   const [homeLogo, setHomeLogo] = useState("");
   const [awayLogo, setAwayLogo] = useState("");
   const [tournamentLogo, setTournamentLogo] = useState("");
@@ -30,6 +32,7 @@ const Match = ({ match }) => {
     getTournamentLogo(match.tournament, setTournamentLogo);
   }, [match]);
 
+  //  returns a div containing the match information, including the tournament logo, the scores of each team, and a video of the match if available
   return (
     <div key={match._id} className="match-container">
       <div className="match-specific-tournament-info">

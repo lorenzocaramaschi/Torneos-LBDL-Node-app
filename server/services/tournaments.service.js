@@ -1,5 +1,6 @@
 import { tournamentDao } from "../daos/index.js";
 
+  //This services are set of functions that use the Tournament DAO to interact with the database and complete the requests
 const createTournament = async (createTournamentRequest) => {
   try {
     const { name } = createTournamentRequest;

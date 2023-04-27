@@ -1,3 +1,5 @@
+/* This is where I put all my CSS */
+
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap");
 
 * {
@@ -135,7 +137,7 @@ a {
 }
 
 .logo-teams:hover {
-   transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 .navbar-Icon {

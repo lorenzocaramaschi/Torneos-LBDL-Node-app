@@ -5,6 +5,7 @@ import Fixture from "../../components/leaderboard/Fixture";
 import LeaderboardFilter from "../../components/leaderboard/LeaderboardFilter";
 import Image from "next/image";
 
+// fecthes all matches stored in /partidos
 export const getStaticProps = async () => {
   const res = await fetch(`${process.env.host}/partidos`);
   const allMatches = await res.json();
@@ -16,12 +17,16 @@ export const getStaticProps = async () => {
   };
 };
 
+// displays a leaderboard and fixture for a tournament
 const Ranking = ({ matches }) => {
+  //  here we manage the state of the year and the matches displayed
   const [year, setYear] = useState("2023");
   const [tournamentMatches, setTournamentMatches] = useState(
     matches.data.filter((match) => match.year === "2023")
   );
 
+  //  this called when the user changes the year in the dropdown
+  //  then it updates the state and filters the matches accordingly
   const filteringYear = (e) => {
     const year = e.target.value;
     setYear(year);
@@ -83,8 +88,11 @@ const Ranking = ({ matches }) => {
           height="123"
         />
         <h1 style={{ fontSize: "64px" }}>Ranking</h1>
+        {/* we pass the year and filteringYear function and filter the leaderboard */}
         <LeaderboardFilter year={year} filteringYear={filteringYear} />
+        {/* then the filtered matches are sent to render the leaderboard */}
         <Leaderboard matches={tournamentMatches} />
+        {/* here we also send the tournament matches to render the fixture of the leaderboard */}
         <Fixture matches={tournamentMatches} />
       </main>
     </>

@@ -1,6 +1,9 @@
 import { Router } from "express";
 import { teamController } from "../controllers/index.js";
 
+// This code sets up the routes for handling HTTP requests related to teams
+// It imports the teamController, which contains the functions for handling these requests
+
 const router = Router();
 
 router

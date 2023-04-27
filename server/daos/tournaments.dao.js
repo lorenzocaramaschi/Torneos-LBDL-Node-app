@@ -1,5 +1,8 @@
 import { Match, Tournament } from "../models/index.js";
-
+// Here I believe that each function explains itself
+// To sum up, this arrow functions are Data Acces Objects
+// They take each model and make the requests to the database with the necessary mongodb methods for each case
+// The difference here with others DAO is that we use Match model also to find Matches related to a requested Tournament
 const createTournament = async (createTournamentRequest) => {
   try {
     const createdTournament = await Tournament.create(createTournamentRequest);
@@ -33,6 +36,8 @@ const deleteTournament = async (id) => {
   }
 };
 
+// Here we use Match model to find matches where the tournament name is equal to the tournamentName variable
+// In consequence, we get the tournament matches
 const findTournamentMatches = async (tournamentName) => {
   try {
     const tournamentMatches = await Match.find({ tournament: tournamentName });

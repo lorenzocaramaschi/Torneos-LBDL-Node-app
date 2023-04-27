@@ -1,6 +1,8 @@
 import { FilterAltOutlined } from "@mui/icons-material";
 import React from "react";
 
+// displays a set of filter dropdown menus with labels and options for filtering all matches received from the team
+// the filters 
 const HistoryFilters = (
   data,
   {
@@ -44,6 +46,7 @@ const HistoryFilters = (
             margin: "1rem 0",
           }}
         >
+          {/* Filter matches by Rival */}
           <label>
             Rival
             <select onChange={data.filteringRival} value={data.rival}>
@@ -57,6 +60,7 @@ const HistoryFilters = (
               ))}
             </select>
           </label>
+          {/* Filter matches by goal difference */}
           <label>
             Diferencia de gol
             <select
@@ -75,6 +79,7 @@ const HistoryFilters = (
               <option value="-3">-3</option>
             </select>
           </label>
+          {/* These filter is not working yet */}
           <label>
             Historiales
             <select onChange={data.filteringHistory} value={data.history}>
@@ -86,6 +91,7 @@ const HistoryFilters = (
               <option value="negative">Negativos</option>
             </select>
           </label>
+          {/* Filter matches by won/tied/lost */}
           <label>
             Partidos
             <select onChange={data.filteringMatches} value={data.matches}>
@@ -97,6 +103,7 @@ const HistoryFilters = (
               <option value="lost">Perdidos</option>
             </select>
           </label>
+          {/* Filter matches by official/friendly tournament */}
           <label>
             Torneos/Partidos
             <select onChange={data.filteringCategory} value={data.category}>
@@ -109,6 +116,7 @@ const HistoryFilters = (
           </label>
         </div>
         <div style={{ display: "flex", justifyContent: "center" }}>
+          {/* This button resets all filters */}
           <button
             style={{
               border: "none",

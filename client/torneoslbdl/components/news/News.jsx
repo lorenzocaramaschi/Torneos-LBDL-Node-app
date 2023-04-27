@@ -1,7 +1,9 @@
 import Image from "next/image";
 import React from "react";
 
+// renders an article on a webpage
 const News = ({ article }) => {
+  // article prop contains the news: title, image, body & author
   return (
     <main>
       <Image
@@ -23,7 +25,15 @@ const News = ({ article }) => {
           <p style={{ fontSize: "16px", fontWeight: "bold", color: "black" }}>
             {article.data.body}
           </p>
-          <p style={{display: "flex", justifyContent: "flex-end", marginTop: "0.5rem"}}>{article.data.author}</p>
+          <p
+            style={{
+              display: "flex",
+              justifyContent: "flex-end",
+              marginTop: "0.5rem",
+            }}
+          >
+            {article.data.author}
+          </p>
         </div>
       </div>
     </main>

@@ -1,10 +1,13 @@
 import { FilterAltOutlined } from "@mui/icons-material";
 import React from "react";
 
+// displays filters for the tournaments
 const TournamentsFilter = ({ category, filteringTournaments }) => {
   return (
     <>
-      <div style={{ display: "flex", alignItems: "center", marginBottom: "1rem"}}>
+      <div
+        style={{ display: "flex", alignItems: "center", marginBottom: "1rem" }}
+      >
         <div
           style={{
             padding: "0.5rem",
@@ -14,13 +17,13 @@ const TournamentsFilter = ({ category, filteringTournaments }) => {
             fontWeight: "bold",
           }}
         >
-          <FilterAltOutlined /> Filtrar por
+          <FilterAltOutlined /> Filtrar por {/* Filter by */}
           <select onChange={filteringTournaments} value={category}>
             <option value="all" defaultValue>
-              Todos
+              Todos {/* All */}
             </option>
             <option value="drafts">Drafts</option>
-            <option value="tournaments">Copas</option>
+            <option value="tournaments">Copas</option> {/* Tournaments */}
           </select>
         </div>
       </div>

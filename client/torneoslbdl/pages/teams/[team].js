@@ -1,6 +1,8 @@
 import Head from "next/head";
 import Team from "../../components/teams/Team";
 
+// fetches data about all teams from /equipos
+// Maps over it to create an array of objects with a params key for each team
 export const getStaticPaths = async () => {
   const res = await fetch(`${process.env.host}/equipos`);
   const data = await res.json();
@@ -17,6 +19,8 @@ export const getStaticPaths = async () => {
   };
 };
 
+// fetches data about the team's historical matches and all teams and tournaments from the respective API endpoints.
+// It returns an object with the teamMatches, allTeamData(list of teams), name(name of the selected team), and tournaments props.
 export const getStaticProps = async (context) => {
   const name = context.params.team;
   const res = await fetch(`${process.env.host}/equipos/${name}/historial`);
@@ -38,6 +42,7 @@ export const getStaticProps = async (context) => {
   };
 };
 
+//  receives the props from getStaticProps, filters the team data to get the selected team, and renders a Head component with the team logo
 export const Details = ({ teamMatches, allTeamData, name, tournaments }) => {
   const teamSelected = allTeamData.data.filter((team) => team.name === name);
 
@@ -50,6 +55,7 @@ export const Details = ({ teamMatches, allTeamData, name, tournaments }) => {
         <link rel="icon" href={teamSelected[0].logo} />
       </Head>
       <main>
+        {/* sends team matches and the team selected to the Team component */}
         <Team matches={teamMatches} team={teamSelected} />
       </main>
     </>

@@ -3,6 +3,7 @@ import Match from "../matches/Match";
 import Leaderboard from "../leaderboard/Leaderboard";
 import RoundSelector from "../leaderboard/RoundSelector";
 
+//displays tournament matches
 const TournamentMatches = ({ tournamentMatches }) => {
   let quarterFinals = tournamentMatches.data.filter(
     (match) => match.round === "Cuartos de final"
@@ -15,6 +16,7 @@ const TournamentMatches = ({ tournamentMatches }) => {
 
   return (
     <>
+      {/* if is friendly we show a message "friendlies are not available at the moment" */}
       {tournamentMatches.data[0].friendly === true ? (
         <>
           <h2
@@ -28,6 +30,7 @@ const TournamentMatches = ({ tournamentMatches }) => {
         </>
       ) : tournamentMatches.data[0].tournament.includes("Draft") &&
         tournamentMatches.data[0].tournament !== "Draft Series 2019" ? (
+        // if the tournament is a draft and not a draft series in 2019, the component displays the matches for each group, a leaderboard for each group, and a round selector for each group, as well as the quarterfinals, semifinals, and final
         <>
           <h2
             style={{ color: "#6568A6", fontSize: "48px", textAlign: "center" }}
@@ -82,6 +85,7 @@ const TournamentMatches = ({ tournamentMatches }) => {
           ))}
         </>
       ) : (
+        // if the tournament is not a draft, the component displays the quarterfinals, semifinals, and final
         <>
           <h2
             style={{ color: "#6568A6", fontSize: "48px", textAlign: "center" }}

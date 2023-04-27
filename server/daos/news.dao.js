@@ -1,5 +1,9 @@
 import News from "../models/news.js";
 
+// Here I believe that each function explains itself
+// To sum up, this arrow functions are Data Acces Objects
+// They take each model and make the requests to the database with the necessary mongodb methods for each case
+
 const createNews = async (createNewsRequest) => {
     try {
       const createdNews = await News.create(createNewsRequest);

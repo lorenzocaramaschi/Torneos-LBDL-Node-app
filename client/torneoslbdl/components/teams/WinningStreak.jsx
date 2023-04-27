@@ -1,11 +1,16 @@
 import { Circle } from "@mui/icons-material";
 import React from "react";
 
+// renders last 5 matches of the team
 const WinningStreak = (data) => {
+  // clone the team matches in a different array
   let teamMatchesClone = data.teamMatches;
+  // we get the team's name
   let name = data.teamName;
+  // initialize streak array
   const streak = [];
 
+  // this function loops through the last five games of the team and checks whether they are a win, draw or a loss.
   const Streak = () => {
     for (
       let i = teamMatchesClone.length - 5;

@@ -1,9 +1,9 @@
 import { newsDao } from "../daos/news.dao.js";
 
-
+  //This services are set of functions that use the News DAO to interact with the database and complete the requests
 const createNews = async (createNewsRequest) => {
   try {
-    const { title, body, image, author, createdAt } = createNewsRequest;
+    const { title} = createNewsRequest;
     const existingNews = await newsDao.findNewsByFilter({ title });
 
     if (existingNews) {

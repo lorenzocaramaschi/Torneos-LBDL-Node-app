@@ -1,5 +1,10 @@
 import { Match, Team } from "../models/index.js";
 
+// Here I believe that each function explains itself
+// To sum up, this arrow functions are Data Acces Objects
+// They take each model and make the requests to the database with the necessary mongodb methods for each case
+// The difference here with others DAO is that we use Match model also to find Matches related to a requested Team
+
 const createTeam = async (createTeamRequest) => {
   try {
     const createdTeam = await Team.create(createTeamRequest);
@@ -40,6 +45,8 @@ const findAllTeams = async () => {
   }
 };
 
+// Here we use Match model to find matches where home or away is equal to the requested teamname
+// In consequence, we get the team's record
 const findTeamRecord = async (teamName) => {
   try {
     const teamRecord = await Match.find({$or: [{home: {$eq: teamName}},{away: {$eq: teamName}}]})

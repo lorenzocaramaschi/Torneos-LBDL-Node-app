@@ -2,6 +2,7 @@ import Head from "next/head";
 import Teams from "../../components/teams/Teams";
 import Image from "next/image";
 
+// fetches the teams data from /equipos and returns it as props to the component
 export const getStaticProps = async () => {
   const response = await fetch(`${process.env.host}/equipos`);
   const data = await response.json();
@@ -12,6 +13,7 @@ export const getStaticProps = async () => {
   };
 };
 
+// teamsScene takes in the teams prop and renders the page layout with a title, a header, and a list of teams
 const teamsScene = ({ teams }) => {
   return (
     <>
@@ -23,12 +25,13 @@ const teamsScene = ({ teams }) => {
       </Head>
       <main>
         <Image
-        alt="torneos lbdl logo"
+          alt="torneos lbdl logo"
           width="123"
           height="123"
           src="https://i.imgur.com/j6itbSk.png"
         />
         <h1>Equipos de La Banda del Lobo</h1>
+        {/* This component renders a list of teams */}
         <Teams teams={teams} />
       </main>
     </>

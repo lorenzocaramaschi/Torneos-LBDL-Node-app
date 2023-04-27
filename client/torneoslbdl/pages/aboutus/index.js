@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
+// displays information about Torneos LBDL
 const AboutUs = () => {
   return (
     <>
@@ -50,6 +51,7 @@ const AboutUs = () => {
         <h3 style={{ color: "#67669A", fontSize: "20px" }}>
           Seguinos en nuestras redes!
         </h3>
+        {/* Social Media */}
         <div className="redes">
           <Link
             target="_blank"
@@ -99,7 +101,7 @@ const AboutUs = () => {
             textAlign: "center",
             position: "absolute",
             color: "#BFC0D9",
-            zIndex: -1
+            zIndex: -1,
           }}
         >
           Made by Lorenzo Caramaschi©

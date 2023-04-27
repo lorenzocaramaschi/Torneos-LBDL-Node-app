@@ -1,5 +1,6 @@
 import { teamDao } from "../daos/index.js";
 
+  //This services are set of functions that use the Teams DAO to interact with the database and complete the requests
 const createTeam = async (createTeamRequest) => {
   try {
     const { name } = createTeamRequest;

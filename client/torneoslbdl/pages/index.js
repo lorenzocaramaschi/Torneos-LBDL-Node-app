@@ -2,6 +2,7 @@ import Head from "next/head";
 import NewsCard from "../components/news/NewsCard";
 import Image from "next/image";
 
+// Here I fetch the data from /noticias, which returns me all the news
 export const getStaticProps = async () => {
   const response = await fetch(`${process.env.host}/noticias`);
   const data = await response.json();
@@ -12,6 +13,7 @@ export const getStaticProps = async () => {
   };
 };
 
+// Then I store the data in news variable and pas it to Home function
 export default function Home({ news }) {
   return (
     <>
@@ -30,6 +32,7 @@ export default function Home({ news }) {
         />
         <h1>Torneos de La Banda del Lobo</h1>
 
+        {/* Here we send news variable through props to the NewsCard component */}
         <NewsCard allNews={news} />
       </main>
     </>

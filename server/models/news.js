@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 
+// News schema can have any of its properties repeated.
 const newsSchema = mongoose.Schema(
   {
     title: String,

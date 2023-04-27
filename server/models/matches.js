@@ -1,5 +1,7 @@
 import mongoose from "mongoose";
 
+// ABOUT MATCH SCHEMA: home and away property MUST EXIST IN TEAMS COLLECTION and tournament MUST EXIST in TOURNAMENTS COLLECTION
+
 const matchSchema = mongoose.Schema(
   {
     home: String,

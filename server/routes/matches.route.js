@@ -1,6 +1,9 @@
 import { Router } from "express";
 import { matchController } from "../controllers/index.js";
 
+// This code sets up the routes for handling HTTP requests related to matches
+// It imports the matchController, which contains the functions for handling these requests
+
 const router = Router();
 
 router
