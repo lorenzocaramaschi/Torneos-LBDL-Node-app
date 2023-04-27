@@ -14,7 +14,7 @@ const TournamentStats = ({ tournamentMatches, tournament }) => {
   return (
     <>
       <h2 style={{ color: "#6568A6", fontSize: "48px", textAlign: "center" }}>
-        Estadísticas // Heading for tournament stats
+        Estadísticas
       </h2>
       <div
         style={{
