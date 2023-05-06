@@ -11,14 +11,14 @@ const Match = ({ match }) => {
   const [tournamentLogo, setTournamentLogo] = useState("");
 
   const getLogo = async (teamName, setLogo) => {
-    const res = await fetch(`${process.env.host}/equipos`);
+    const res = await fetch(`${process.env.host}/equipos`,{cache: 'no-cache'});
     const data = await res.json();
     let teamLogo = data.data.filter((team) => team.name === teamName);
     setLogo(teamLogo[0].logo);
   };
 
   const getTournamentLogo = async (tournamentName, setLogo) => {
-    const res = await fetch(`${process.env.host}/torneos`);
+    const res = await fetch(`${process.env.host}/torneos`,{cache: 'no-cache'});
     const data = await res.json();
     let tournamentLogo = data.data.filter(
       (tournament) => tournament.name === tournamentName

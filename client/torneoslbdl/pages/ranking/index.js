@@ -7,7 +7,7 @@ import Image from "next/image";
 
 // fecthes all matches stored in /partidos
 export const getStaticProps = async () => {
-  const res = await fetch(`${process.env.host}/partidos`);
+  const res = await fetch(`${process.env.host}/partidos`,{cache: 'no-cache'});
   const allMatches = await res.json();
 
   return {

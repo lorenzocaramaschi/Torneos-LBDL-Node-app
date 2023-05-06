@@ -4,7 +4,7 @@ import Team from "../../components/teams/Team";
 // fetches data about all teams from /equipos
 // Maps over it to create an array of objects with a params key for each team
 export const getStaticPaths = async () => {
-  const res = await fetch(`${process.env.host}/equipos`);
+  const res = await fetch(`${process.env.host}/equipos`,{cache: 'no-cache'});
   const data = await res.json();
 
   const paths = data.data.map((team) => {
@@ -23,13 +23,13 @@ export const getStaticPaths = async () => {
 // It returns an object with the teamMatches, allTeamData(list of teams), name(name of the selected team), and tournaments props.
 export const getStaticProps = async (context) => {
   const name = context.params.team;
-  const res = await fetch(`${process.env.host}/equipos/${name}/historial`);
+  const res = await fetch(`${process.env.host}/equipos/${name}/historial`,{cache: 'no-cache'});
   const data = await res.json();
 
-  const response = await fetch(`${process.env.host}/equipos`);
+  const response = await fetch(`${process.env.host}/equipos`,{cache: 'no-cache'});
   const allTeams = await response.json();
 
-  const response2 = await fetch(`${process.env.host}/torneos`);
+  const response2 = await fetch(`${process.env.host}/torneos`,{cache: 'no-cache'});
   const allTournaments = await response2.json();
 
   return {

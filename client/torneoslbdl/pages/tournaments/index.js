@@ -4,9 +4,11 @@ import Image from "next/image";
 import TournamentsFilter from "@component/components/tournaments/TournamentsFilter";
 import React, { useState } from "react";
 
-// fetches the tournaments data from /torneos and passes it as props to TournamentsScene 
+// fetches the tournaments data from /torneos and passes it as props to TournamentsScene
 export const getStaticProps = async () => {
-  const response = await fetch(`${process.env.host}/torneos`);
+  const response = await fetch(`${process.env.host}/torneos`, {
+    cache: "no-cache",
+  });
   const data = await response.json();
   return {
     props: {

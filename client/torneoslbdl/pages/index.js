@@ -4,7 +4,7 @@ import Image from "next/image";
 
 // Here I fetch the data from /noticias, which returns me all the news
 export const getStaticProps = async () => {
-  const response = await fetch(`${process.env.host}/noticias`);
+  const response = await fetch(`${process.env.host}/noticias`,{cache: 'no-cache'});
   const data = await response.json();
   return {
     props: {

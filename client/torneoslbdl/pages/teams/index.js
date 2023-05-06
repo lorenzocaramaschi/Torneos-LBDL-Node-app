@@ -4,7 +4,7 @@ import Image from "next/image";
 
 // fetches the teams data from /equipos and returns it as props to the component
 export const getStaticProps = async () => {
-  const response = await fetch(`${process.env.host}/equipos`);
+  const response = await fetch(`${process.env.host}/equipos`,{cache: 'no-cache'});
   const data = await response.json();
   return {
     props: {

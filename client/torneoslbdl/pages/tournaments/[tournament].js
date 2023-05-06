@@ -5,7 +5,7 @@ import Image from "next/image";
 
 // generates the paths that Next.js should statically generate based on the tournaments returned from /torneos
 export const getStaticPaths = async () => {
-  const res = await fetch(`${process.env.host}/torneos`);
+  const res = await fetch(`${process.env.host}/torneos`,{cache: 'no-cache'});
   const data = await res.json();
 
   const paths = data.data.map((tournament) => {
@@ -23,10 +23,10 @@ export const getStaticPaths = async () => {
 // fetches the tournament matches and information for the specific tournament based on tournamentName, stored in params
 export const getStaticProps = async (context) => {
   const name = context.params.tournament;
-  const res = await fetch(`${process.env.host}/torneos/${name}/partidos`);
+  const res = await fetch(`${process.env.host}/torneos/${name}/partidos`,{cache: 'no-cache'});
   const data = await res.json();
 
-  const response = await fetch(`${process.env.host}/torneos`);
+  const response = await fetch(`${process.env.host}/torneos`,{cache: 'no-cache'});
   const allTournaments = await response.json();
   const tournament = allTournaments.data.filter(
     (tournamentEl) => tournamentEl.name === name

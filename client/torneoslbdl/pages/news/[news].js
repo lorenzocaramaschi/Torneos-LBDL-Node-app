@@ -3,7 +3,7 @@ import News from "../../components/news/News";
 
 // both getStaticProps and Paths are used to pre-generate the HTML and data for each news article page, making them faster to load
 export const getStaticPaths = async () => {
-  const res = await fetch(`${process.env.host}/noticias`);
+  const res = await fetch(`${process.env.host}/noticias`,{cache: 'no-cache'});
   const data = await res.json();
 
   const paths = data.data.map((news) => {
@@ -19,7 +19,7 @@ export const getStaticPaths = async () => {
 };
 export const getStaticProps = async (context) => {
   const article = context.params.news;
-  const res = await fetch(`${process.env.host}/noticias/${article}`);
+  const res = await fetch(`${process.env.host}/noticias/${article}`,{cache: 'no-cache'});
   const data = await res.json();
 
   return {
