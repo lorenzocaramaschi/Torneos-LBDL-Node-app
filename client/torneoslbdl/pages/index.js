@@ -4,7 +4,9 @@ import Image from "next/image";
 
 // Here I fetch the data from /noticias, which returns me all the news
 export const getStaticProps = async () => {
-  const response = await fetch(`${process.env.host}/noticias`,{cache: 'no-cache'});
+  const response = await fetch(`${process.env.host}/noticias`, {
+    cache: "no-cache",
+  });
   const data = await response.json();
   return {
     props: {
@@ -33,7 +35,9 @@ export default function Home({ news }) {
         <h1>Torneos de La Banda del Lobo</h1>
 
         {/* Here we send news variable through props to the NewsCard component */}
-        <NewsCard allNews={news} />
+        <div style={{display: "flex", flexDirection: "column-reverse"}}>
+          <NewsCard allNews={news} />
+        </div>
       </main>
     </>
   );

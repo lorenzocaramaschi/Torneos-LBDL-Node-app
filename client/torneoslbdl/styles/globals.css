@@ -8,6 +8,11 @@
   margin: 0;
   font-family: "Poppins", sans-serif;
 }
+.teams-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
 
 main {
   display: flex;
@@ -37,14 +42,38 @@ a {
   background-color: #e9e9e9;
   padding: 15px;
   border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem 0;
 }
 
-.news-card a img {
+.news-detail-card {
+  background-color: #e9e9e9;
+  padding: 15px;
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  height: 100%;
+  margin: auto;
+}
+
+.news-detail-card img {
   border-bottom: #67669a 5px solid;
+  width: 100%;
+  height: auto;
+  margin-bottom: 1rem;
 }
 
 .news-card img {
   border-bottom: #67669a 5px solid;
+  width: 100%;
+  height: auto;
+  margin-bottom: 1rem;
 }
 
 .team-score {
@@ -233,4 +262,41 @@ select option {
 
 .divider {
   background-color: #bfc0d9;
+}
+
+@media (max-width: 390px) {
+  .teams-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .teams-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  .about-text{
+    width: 50%;    
+    margin: auto;
+  }
+
+  .tournament-grid{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 20px;
+  }
+
+  .teamItem {
+    flex-direction: column;
+    width: 80%;
+    height: 100%;
+    text-align: center;
+    font-size: 1.25rem;
+    margin: auto;
+    transition: all 1s;
+  }
+
+  .teamItem:hover{
+    transform: scale(1.05);
+  }
 }

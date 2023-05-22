@@ -11,11 +11,11 @@ const News = ({ article }) => {
         alt={"Torneos de La Banda Logo"}
         width={123}
         height={123}
+        style={{marginBottom: "24px"}}
       />
-      <h1>Torneos de La Banda del Lobo</h1>
       <div>
-        <div className="news-card">
-          <h1 style={{ fontSize: "24px" }}>{article.data.title}</h1>
+        <div className="news-detail-card">
+          <h1>{article.data.title}</h1>
           <Image
             src={article.data.image}
             alt={article.data.title}
@@ -30,6 +30,7 @@ const News = ({ article }) => {
               display: "flex",
               justifyContent: "flex-end",
               marginTop: "0.5rem",
+              width: "100%",
             }}
           >
             {article.data.author}

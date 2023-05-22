@@ -16,6 +16,7 @@ const matchSchema = mongoose.Schema(
     round: String,
     friendly: Boolean,
     year: String,
+    isPlayed: Boolean,
   },
   {
     versionKey: false,

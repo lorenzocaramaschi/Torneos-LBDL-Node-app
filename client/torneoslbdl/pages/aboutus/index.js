@@ -23,6 +23,7 @@ const AboutUs = () => {
         />
         <h1>Sobre Torneos LBDL</h1>
         <div
+          className="about-text"
           style={{
             backgroundColor: "#67669A",
             borderRadius: "28px",

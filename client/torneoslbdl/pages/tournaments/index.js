@@ -64,7 +64,9 @@ const TournamentsScene = ({ tournamentsData }) => {
           category={category}
         />
         {/*  render the list of tournaments */}
-        <Tournaments tournaments={tournaments} />
+        <div className="tournament-grid">
+          <Tournaments tournaments={tournaments} />
+        </div>
       </main>
     </>
   );
