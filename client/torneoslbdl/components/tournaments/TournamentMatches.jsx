@@ -13,11 +13,16 @@ const TournamentMatches = ({ tournamentMatches }) => {
     (match) => match.round === "Semifinales"
   );
   let final = tournamentMatches.data.filter((match) => match.round === "Final");
+  console.log(tournamentMatches);
 
   return (
     <>
-      {/* if is friendly we show a message "friendlies are not available at the moment" */}
-      {tournamentMatches.data[0].friendly === true || tournamentMatches.data[0].tournament === "Liga LBDL 2023" ? (
+      {/* if is friendly we show a message "friendlies are not available at the moment", if its a league also show no info available (fix soon), and if tournament matches is empty, null, undefined, we show the same error. */}
+      {!tournamentMatches ||
+      !tournamentMatches.data ||
+      tournamentMatches.data.length === 0 ||
+      tournamentMatches.data[0].friendly === true ||
+      tournamentMatches.data[0].tournament === "Liga LBDL 2023" ? (
         <>
           <h2
             style={{ color: "#6568A6", fontSize: "48px", textAlign: "center" }}
