@@ -5,7 +5,7 @@ import Image from "next/image";
 // displays a list of tournaments with a link to each one of them (friendly tournaments aren't rendered in the list)
 const Tournaments = ({ tournaments }) => {
   return tournaments
-    .filter((tournament) => tournament.name !== "Amistosos")
+    .filter((tournament) => tournament.name !== "Amistosos" && tournament.name !== "Liga LBDL 2023")
     .map((tournament) => (
       <Link
         style={{

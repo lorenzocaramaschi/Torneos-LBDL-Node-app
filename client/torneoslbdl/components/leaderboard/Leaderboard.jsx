@@ -18,7 +18,7 @@ const Leaderboard = ({ matches }) => {
       <LeaderboardHeader />
       <tbody>
         {/* we pass the matches to render each row of teams info with LeaderboarRows component */}
-        <LeaderboardRows matches={matches} />
+        <LeaderboardRows matches={matches.filter((match) => match.isPlayed !== false)} />
       </tbody>
     </table>
   );

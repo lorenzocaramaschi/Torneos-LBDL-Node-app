@@ -17,15 +17,15 @@ const TournamentMatches = ({ tournamentMatches }) => {
   return (
     <>
       {/* if is friendly we show a message "friendlies are not available at the moment" */}
-      {tournamentMatches.data[0].friendly === true ? (
+      {tournamentMatches.data[0].friendly === true || tournamentMatches.data[0].tournament === "Liga LBDL 2023" ? (
         <>
           <h2
             style={{ color: "#6568A6", fontSize: "48px", textAlign: "center" }}
           >
-            Amistosos
+            Información no disponible
           </h2>
           <p style={{ textAlign: "center" }}>
-            Los amistosos no están disponibles actualmente.
+            Los partidos que buscas no están disponibles actualmente.
           </p>
         </>
       ) : tournamentMatches.data[0].tournament.includes("Draft") &&

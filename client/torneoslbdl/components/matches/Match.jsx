@@ -3,22 +3,24 @@ import { PlayDisabled } from "@mui/icons-material";
 import { Divider } from "@mui/material";
 import Image from "next/image";
 
-// displays information about a match
 const Match = ({ match }) => {
-  // manage state for the logos of the home and away teams and the tournament logos
   const [homeLogo, setHomeLogo] = useState("");
   const [awayLogo, setAwayLogo] = useState("");
   const [tournamentLogo, setTournamentLogo] = useState("");
 
   const getLogo = async (teamName, setLogo) => {
-    const res = await fetch(`${process.env.host}/equipos`,{cache: 'no-cache'});
+    const res = await fetch(`${process.env.host}/equipos`, {
+      cache: "no-cache",
+    });
     const data = await res.json();
     let teamLogo = data.data.filter((team) => team.name === teamName);
     setLogo(teamLogo[0].logo);
   };
 
   const getTournamentLogo = async (tournamentName, setLogo) => {
-    const res = await fetch(`${process.env.host}/torneos`,{cache: 'no-cache'});
+    const res = await fetch(`${process.env.host}/torneos`, {
+      cache: "no-cache",
+    });
     const data = await res.json();
     let tournamentLogo = data.data.filter(
       (tournament) => tournament.name === tournamentName
@@ -32,7 +34,6 @@ const Match = ({ match }) => {
     getTournamentLogo(match.tournament, setTournamentLogo);
   }, [match]);
 
-  //  returns a div containing the match information, including the tournament logo, the scores of each team, and a video of the match if available
   return (
     <div key={match._id} className="match-container">
       <div className="match-specific-tournament-info">
@@ -63,34 +64,40 @@ const Match = ({ match }) => {
               {match.home}
             </p>
           </div>
-          {match.penalties === false ? (
-            match.homeScore > match.awayScore ? (
-              <p
-                style={{
-                  color: "#6568A6",
-                  fontWeight: "bold",
-                  fontSize: "20px",
-                }}
-              >
-                {match.homeScore}
-              </p>
-            ) : (
-              <p
-                style={{ color: "black", fontWeight: "bold", fontSize: "20px" }}
-              >
-                {match.homeScore}
-              </p>
-            )
-          ) : match.homePenalties > match.awayPenalties ? (
-            <p
-              style={{ color: "#6568A6", fontWeight: "bold", fontSize: "20px" }}
-            >
-              {match.homeScore}({match.homePenalties})
-            </p>
-          ) : (
-            <p style={{ color: "black", fontWeight: "bold", fontSize: "20px" }}>
-              {match.homeScore}({match.homePenalties})
-            </p>
+          {match.isPlayed !== false && (
+            <>
+              {match.penalties === false ? (
+                match.homeScore > match.awayScore ? (
+                  <p
+                    style={{
+                      color: "#6568A6",
+                      fontWeight: "bold",
+                      fontSize: "20px",
+                    }}
+                  >
+                    {match.homeScore}
+                  </p>
+                ) : (
+                  <p
+                    style={{ color: "black", fontWeight: "bold", fontSize: "20px" }}
+                  >
+                    {match.homeScore}
+                  </p>
+                )
+              ) : match.homePenalties > match.awayPenalties ? (
+                <p
+                  style={{ color: "#6568A6", fontWeight: "bold", fontSize: "20px" }}
+                >
+                  {match.homeScore}({match.homePenalties})
+                </p>
+              ) : (
+                <p
+                  style={{ color: "black", fontWeight: "bold", fontSize: "20px" }}
+                >
+                  {match.homeScore}({match.homePenalties})
+                </p>
+              )}
+            </>
           )}
         </div>
         <Divider className="divider" />
@@ -108,42 +115,48 @@ const Match = ({ match }) => {
               {match.away}
             </p>
           </div>
-          {match.penalties === false ? (
-            match.homeScore < match.awayScore ? (
-              <p
-                style={{
-                  color: "#6568A6",
-                  fontWeight: "bold",
-                  fontSize: "20px",
-                }}
-              >
-                {match.awayScore}
-              </p>
-            ) : (
-              <p
-                style={{
-                  color: "black",
-                  fontWeight: "bold",
-                  fontSize: "20px",
-                }}
-              >
-                {match.awayScore}
-              </p>
-            )
-          ) : match.homePenalties < match.awayPenalties ? (
-            <p
-              style={{
-                color: "#6568A6",
-                fontWeight: "bold",
-                fontSize: "20px",
-              }}
-            >
-              {match.awayScore}({match.awayPenalties})
-            </p>
-          ) : (
-            <p style={{ color: "black", fontWeight: "bold", fontSize: "20px" }}>
-              {match.awayScore}({match.awayPenalties})
-            </p>
+          {match.isPlayed !== false && (
+            <>
+              {match.penalties === false ? (
+                match.homeScore < match.awayScore ? (
+                  <p
+                    style={{
+                      color: "#6568A6",
+                      fontWeight: "bold",
+                      fontSize: "20px",
+                    }}
+                  >
+                    {match.awayScore}
+                  </p>
+                ) : (
+                  <p
+                    style={{
+                      color: "black",
+                      fontWeight: "bold",
+                      fontSize: "20px",
+                    }}
+                  >
+                    {match.awayScore}
+                  </p>
+                )
+              ) : match.homePenalties < match.awayPenalties ? (
+                <p
+                  style={{
+                    color: "#6568A6",
+                    fontWeight: "bold",
+                    fontSize: "20px",
+                  }}
+                >
+                  {match.awayScore}({match.awayPenalties})
+                </p>
+              ) : (
+                <p
+                  style={{ color: "black", fontWeight: "bold", fontSize: "20px" }}
+                >
+                  {match.awayScore}({match.awayPenalties})
+                </p>
+              )}
+            </>
           )}
         </div>
       </div>

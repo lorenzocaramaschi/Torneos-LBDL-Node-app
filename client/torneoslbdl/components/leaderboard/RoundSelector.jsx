@@ -58,7 +58,8 @@ const RoundSelector = ({ matches }) => {
         }}
       >
         {/* This conditional says that if the tournament includes "Draft" then the Button should say "Fecha" instead of "Jornada", which is a subtle difference in Spanish, but you can change both to "Round" */}
-        {matches[0].tournament.includes("Draft") ? (
+        {matches[0].tournament.includes("Draft") ||
+        matches[0].tournament.includes("Liga") ? (
           <>
             <ArrowLeftOutlined onClick={() => previousRound()} />
             Fecha {round}
@@ -76,6 +77,10 @@ const RoundSelector = ({ matches }) => {
       {matches[0].tournament.includes("Draft")
         ? matches
             .filter((match) => match.round.includes(`Fecha ${round}`))
+            .map((match) => <Match key={match._id} match={match} />)
+        : matches[0].tournament.includes("Liga")
+        ? matches
+            .filter((match) => match.round === `${round}`)
             .map((match) => <Match key={match._id} match={match} />)
         : matches
             .filter((match) => match.tournament === tournaments[round - 1])
