@@ -13,7 +13,7 @@ const Team = (team) => {
   const [history, setHistory] = useState("all");
   const [matches, setMatches] = useState("all");
   const [goalDifference, setGoalDifference] = useState("all");
-  const [teamHistory, setTeamHistory] = useState(team.matches.data);
+  const [teamHistory, setTeamHistory] = useState(team.matches);
 
   const { logo, name } = team.team[0]; // we get the logo and name of the team
 
@@ -25,7 +25,7 @@ const Team = (team) => {
     setMatches("all");
     setRival("all");
 
-    setTeamHistory(team.matches.data);
+    setTeamHistory(team.matches);
     return <History name={name} matches={teamHistory} />;
   };
 
@@ -37,15 +37,15 @@ const Team = (team) => {
     setCategory(category);
 
     category === "all"
-      ? setTeamHistory(team.matches.data) && (
+      ? setTeamHistory(team.matches) && (
           <History name={name} matches={teamHistory} />
         )
       : category === "friendly"
       ? setTeamHistory(
-          team.matches.data.filter((match) => match.friendly === true)
+          team.matches.filter((match) => match.friendly === true)
         ) && <History name={name} matches={teamHistory} />
       : setTeamHistory(
-          team.matches.data.filter((match) => match.friendly === false)
+          team.matches.filter((match) => match.friendly === false)
         ) && <History name={name} matches={teamHistory} />;
   };
 
@@ -55,12 +55,12 @@ const Team = (team) => {
     setGoalDifference(goalDifference);
 
     goalDifference === "all"
-      ? setTeamHistory(team.matches.data) && (
+      ? setTeamHistory(team.matches) && (
           <History name={name} matches={teamHistory} />
         )
       : goalDifference === "+3"
       ? setTeamHistory(
-          team.matches.data.filter(
+          team.matches.filter(
             (match) =>
               (match.home === name &&
                 match.homeScore > match.awayScore &&
@@ -72,7 +72,7 @@ const Team = (team) => {
         ) && <History name={name} matches={teamHistory} />
       : goalDifference === "+2"
       ? setTeamHistory(
-          team.matches.data.filter(
+          team.matches.filter(
             (match) =>
               (match.home === name &&
                 match.homeScore > match.awayScore &&
@@ -84,7 +84,7 @@ const Team = (team) => {
         ) && <History matches={teamHistory} />
       : goalDifference === "+1"
       ? setTeamHistory(
-          team.matches.data.filter(
+          team.matches.filter(
             (match) =>
               (match.home === name &&
                 match.homeScore > match.awayScore &&
@@ -96,13 +96,13 @@ const Team = (team) => {
         ) && <History matches={teamHistory} />
       : goalDifference === "0"
       ? setTeamHistory(
-          team.matches.data.filter(
+          team.matches.filter(
             (match) => match.homeScore - match.awayScore === 0
           )
         ) && <History matches={teamHistory} />
       : goalDifference === "-1"
       ? setTeamHistory(
-          team.matches.data.filter(
+          team.matches.filter(
             (match) =>
               (match.home !== name &&
                 match.homeScore > match.awayScore &&
@@ -114,7 +114,7 @@ const Team = (team) => {
         ) && <History matches={teamHistory} />
       : goalDifference === "-2"
       ? setTeamHistory(
-          team.matches.data.filter(
+          team.matches.filter(
             (match) =>
               (match.home !== name &&
                 match.homeScore > match.awayScore &&
@@ -125,7 +125,7 @@ const Team = (team) => {
           )
         ) && <History matches={teamHistory} />
       : setTeamHistory(
-          team.matches.data.filter(
+          team.matches.filter(
             (match) =>
               (match.home !== name &&
                 match.homeScore > match.awayScore &&
@@ -142,10 +142,10 @@ const Team = (team) => {
     const matches = e.target.value;
     setMatches(matches);
     matches === "all"
-      ? setTeamHistory(team.matches.data) && <History matches={teamHistory} />
+      ? setTeamHistory(team.matches) && <History matches={teamHistory} />
       : matches === "won"
       ? setTeamHistory(
-          team.matches.data.filter(
+          team.matches.filter(
             (match) =>
               (match.home === name && match.homeScore > match.awayScore) ||
               (match.away === name && match.homeScore < match.awayScore) ||
@@ -156,12 +156,10 @@ const Team = (team) => {
         ) && <History matches={teamHistory} />
       : matches === "tied"
       ? setTeamHistory(
-          team.matches.data.filter(
-            (match) => match.homeScore === match.awayScore
-          )
+          team.matches.filter((match) => match.homeScore === match.awayScore)
         ) && <History matches={teamHistory} />
       : setTeamHistory(
-          team.matches.data.filter(
+          team.matches.filter(
             (match) =>
               (match.home !== name && match.homeScore > match.awayScore) ||
               (match.away !== name && match.homeScore < match.awayScore) ||
@@ -177,9 +175,9 @@ const Team = (team) => {
     const rival = e.target.value;
     setRival(rival);
     rival === "all"
-      ? setTeamHistory(team.matches.data) && <History matches={teamHistory} />
+      ? setTeamHistory(team.matches) && <History matches={teamHistory} />
       : setTeamHistory(
-          team.matches.data.filter(
+          team.matches.filter(
             (match) => match.home === rival || match.away === rival
           )
         ) && <History matches={teamHistory} />;
@@ -190,7 +188,7 @@ const Team = (team) => {
     const history = e.target.value;
     setHistory(history);
     history === "all"
-      ? setTeamHistory(team.matches.data) && (
+      ? setTeamHistory(team.matches) && (
           <History name={name} matches={teamHistory} />
         )
       : history === "positive"
@@ -208,12 +206,12 @@ const Team = (team) => {
         {/* renders the team's name */}
         <h1 style={{ fontSize: "64px" }}>{name}</h1>
         {/* renders team's last 5 matches streak */}
-        <WinningStreak teamMatches={team.matches.data} teamName={name} />
+        <WinningStreak teamMatches={team.matches} teamName={name} />
         <h4 style={{ fontSize: "16px", color: "#6568A6", fontWeight: "bold" }}>
           Historial
         </h4>
         {/* returns the team's history of ALL its matches played in a won-tied-lost count */}
-        <HistoryRecord teamName={name} teamMatches={team.matches.data} />
+        <HistoryRecord teamName={name} teamMatches={team.matches} />
         <h2
           style={{
             marginTop: "1rem",
@@ -226,7 +224,7 @@ const Team = (team) => {
         </h2>
         {/* returns a filter manager for the matches the team has played, and we pass the specific states and functions we generated previously */}
         <HistoryFilters
-          data={team.matches.data}
+          data={team.matches}
           teamName={name}
           rival={rival}
           goalDifference={goalDifference}

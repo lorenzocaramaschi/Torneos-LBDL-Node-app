@@ -12,6 +12,11 @@ const RoundSelector = ({ matches }) => {
     new Set(matches.flatMap((match) => [match.tournament]))
   );
 
+  // we generate an array of each rounds for league schedule
+  const rounds = Array.from(
+    new Set(matches.flatMap((match)=>[match.round]))
+  )
+
   // this functions update the round state variable based on the current value and the tournaments array
   const nextRound = () => {
     if (round >= 3 && tournaments[0].includes("Draft")) {
@@ -21,7 +26,14 @@ const RoundSelector = ({ matches }) => {
       tournaments[0].includes("Torneo")
     ) {
       setRound(tournaments.length);
-    } else {
+    }
+    else if (
+      round >= rounds.length &&
+      tournaments[0].includes("Liga")
+    ) {
+      setRound(tournaments.length);
+    }
+    else {
       setRound(round + 1);
     }
   };
@@ -29,6 +41,8 @@ const RoundSelector = ({ matches }) => {
     if (round <= 1 && tournaments[0].includes("Draft")) {
       setRound(1);
     } else if (round <= 1 && tournaments[0].includes("Torneo")) {
+      setRound(1);
+    } else if (round <= 1 && tournaments[0].includes("Liga")) {
       setRound(1);
     } else {
       setRound(round - 1);

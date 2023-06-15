@@ -1,6 +1,6 @@
 {
   "name": "torneos-lbdl",
-  "version": "9.1.6",
+  "version": "9.1.7",
   "description": "",
   "main": "server.js",
   "type": "module",

@@ -4,7 +4,7 @@ import React from "react";
 // renders last 5 matches of the team
 const WinningStreak = (data) => {
   // clone the team matches in a different array
-  let teamMatchesClone = data.teamMatches;
+  let teamMatchesClone = data;
   // we get the team's name
   let name = data.teamName;
   // initialize streak array
