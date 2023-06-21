@@ -264,10 +264,23 @@ select option {
   background-color: #bfc0d9;
 }
 
+@media (max-width: 780px) {
+  .news-title {
+    font-size: 42px;
+  }
+
+  
+}
+
 @media (max-width: 390px) {
   .teams-grid {
     grid-template-columns: repeat(1, 1fr);
   }
+  .news-detail-card{
+    width: 90%;
+  }
+
+
 }
 
 @media (min-width: 1024px) {

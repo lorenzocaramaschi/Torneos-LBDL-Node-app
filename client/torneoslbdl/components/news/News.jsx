@@ -15,7 +15,7 @@ const News = ({ article }) => {
       />
       <div>
         <div className="news-detail-card">
-          <h1>{article.data.title}</h1>
+          <h1 className="news-title">{article.data.title}</h1>
           <Image
             src={article.data.image}
             alt={article.data.title}
