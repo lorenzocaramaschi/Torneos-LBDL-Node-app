@@ -4,10 +4,13 @@ import Leaderboard from "../../components/leaderboard/Leaderboard";
 import Fixture from "../../components/leaderboard/Fixture";
 import LeaderboardFilter from "../../components/leaderboard/LeaderboardFilter";
 import Image from "next/image";
+import { Circle } from "@mui/icons-material";
 
 // fecthes all matches stored in /partidos
 export const getStaticProps = async () => {
-  const res = await fetch(`${process.env.host}/partidos`,{cache: 'no-cache'});
+  const res = await fetch(`${process.env.host}/partidos`, {
+    cache: "no-cache",
+  });
   const allMatches = await res.json();
 
   return {
@@ -92,6 +95,27 @@ const Ranking = ({ matches }) => {
         <LeaderboardFilter year={year} filteringYear={filteringYear} />
         {/* then the filtered matches are sent to render the leaderboard */}
         <Leaderboard matches={tournamentMatches} />
+        {/* Shows data according to the year of the tournament */}
+        <div>
+          {Number(year) >= 2023 ? (
+            <div style={{ display: "flex", fontWeight: "bold", margin: "auto"}}>
+              <div style={{ display: "flex", margin: "0 1rem" }}>
+                <Circle style={{ color: "gold" }} />
+                <p>Golden Four</p>
+              </div>
+              <div style={{ display: "flex", margin: "0 1rem" }}>
+                <Circle style={{ color: "silver" }} />
+                <p>Silver Four</p>
+              </div>
+              <div style={{ display: "flex", margin: "0 1rem" }}>
+                <Circle style={{ color: "#ec5353" }} />
+                <p>Play Off Tronco</p>
+              </div>
+            </div>
+          ) : (
+            <></>
+          )}
+        </div>
         {/* here we also send the tournament matches to render the fixture of the leaderboard */}
         <Fixture matches={tournamentMatches} />
       </main>

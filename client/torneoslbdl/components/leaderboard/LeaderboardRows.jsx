@@ -117,13 +117,19 @@ const LeaderboardRows = ({ matches }) => {
           <tr
             key={team}
             style={
-              // Ignore this conditional. It says that if "Draft" is included in the name's tournament, only top 2 players will be styled differently
-              matches[0].tournament.includes("Draft")
+              matches[0].tournament.includes("Liga LBDL")
+                ? index < 4
+                  ? { backgroundColor: "black", color: "gold" }
+                  : index > 3 && index < 8
+                  ? { backgroundColor: "silver", color: "white" }
+                  : index > sortedTeams.length - 3
+                  ? { backgroundColor: "#ec5353" }
+                  : {}
+                : matches[0].tournament.includes("Draft")
                 ? index < 2
                   ? { backgroundColor: "#49496d" }
                   : {}
-                : // you'll probably be using this, which states that last 3 teams are styled in red (relegation) and first 8 qualify for an special tournament and are styled in black
-                index < 8
+                : index < 8
                 ? { backgroundColor: "black", color: "gold" }
                 : index > sortedTeams.length - 3
                 ? { backgroundColor: "#ec5353" }
